@@ -32,8 +32,16 @@ White Space Characters:
 \f form feed
 \r return
 
+Method:
+match() : only match from the begging of the string
+search(): scan through the string and match any position
+findall(): Find all substrings matched by RE,return a list
+finditer(): same as findall but return a iterator.
+
 DONT FORGET!:
 . + * ? [] $ ^ () {} | \
+
+
 
 '''
 import re
@@ -59,6 +67,11 @@ print(ageDict)
 ret = re.findall(r'ab', 'aaababacabbaacaaada')
 print(ret)
 
-m = re.search(r'(?P=word[1-9]{2})', exampleString)
+m = re.search(r'(?P<word>[1-9]{2})', exampleString)
 print(m.group('word'))
 print(m.groups())
+
+
+p = re.compile('a[bcd]*b', re.VERBOSE)
+m = p.match('abbcbd')
+print(m.group(0))
