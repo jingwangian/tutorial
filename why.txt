@@ -1,0 +1,38 @@
+## 1
+Why the RDS instance name are t2,r3,m3,m4, are there some meaning?
+
+
+## 2
+If setting the huge_pages to on, how can user set the Hugepagesize ?
+
+$ head -1 $PGDATA/postmaster.pid
+4170
+$ grep ^VmPeak /proc/4170/status
+VmPeak:  6490428 kB
+$ grep ^Hugepagesize /proc/meminfo
+Hugepagesize:       2048 kB
+
+sysctl -w vm.nr_hugepages=3170
+
+
+## 3.1 What is the max Maximum number of semaphores system-wide and Maximum size of shared memory segment when I created a PostgreSQL instances? Can I changed it?
+## 3.2 Can user have a look or modify the system v resources?
+
+
+## 4.1 Is there swap file used in RDS instance? What I konw is there isn't swaf file when creating a EC2 instance.
+## 4.2 Why there is no swap file when creating a EC2 instance?
+
+
+## 5 How can docker be used based on EC2? Is docker running on the a virtual machine?
+
+## 6 Is there NAS used as the storage for the AWS RDS ? How does make sure the data has been flushed into the NAS because I got to know the NAS has their cash.
+
+
+## 7 The method of stop the PostgreSQL instance.
+Using the pg_ctl command, there are 3 ways to stop the PostgreSQL : start, fast, immediate. If I use the stop in the Instance Actions menu to stop the PG, what type of method will be used?
+
+## 8 I stop the PostgreSQL instance, but can't change the Parameter Group from default to my created one.
+
+## If I reboot the RDS, will the Endpoint be changed or not?
+flight-db.c6vuzqnavuqr.ap-southeast-2.rds.amazonaws.com
+flight-dbs.c6vuzqnavuqr.ap-southeast-2.rds.amazonaws.com

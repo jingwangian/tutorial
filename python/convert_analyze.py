@@ -18,11 +18,7 @@ with open(file_name) as f:
     for line in f:
         if line.find('aws s3 cp s3') != -1:
             item_list = line.strip().split(' ')
-            # print(item_list[1:3])
             time_str = '{} {}'.format(*item_list[1:3])
-            # time_str = '{0} {1}'.format(*(1, 2))
-            # print(line.strip())
-            # print(time_str)
             if pre_d1 is None:
                 time_lines.append(0)
                 d1 = datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S,%f")
