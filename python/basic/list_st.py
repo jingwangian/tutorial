@@ -18,7 +18,7 @@ count(object): Get the number of item in the list
 
 extend: l1 + l2 ---> l1
 
-index: return first index of value, not found raise ValueError
+index(value): return first index of value, not found raise ValueError
 insert(index,object): insert object before index
 pop(index): Remove and return the object at index
 Remove(object): Remove first found value
