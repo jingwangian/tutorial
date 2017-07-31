@@ -64,12 +64,29 @@ for eachName in names:
 print(ageDict)
 
 
-ret = re.findall(r'ab', 'aaababacabbaacaaada')
+#*? +? ??
+m = re.search(r'a.*b', 'a1ba1234b')
+print(m.group())
+
+
+# Using *? so no greedy
+m = re.search(r'a.*?b', 'a1ba1234b')
+print(m.group())
+
+m = re.search('a{3,5}', 'aaaaa',)
+print(m.group())
+
+m = re.search('a{3,5}?', 'aaaaa',)
+print(m.group())
+
+ret = re.findall(r'aa', 'aaababacabbaacaaada')
 print(ret)
 
-m = re.search(r'(?P<word>[1-9]{2})', exampleString)
-print(m.group('word'))
-print(m.groups())
+m = re.search(r'Oscar.*(?P<word>[0-9]{3})', exampleString)
+if m is not None:
+    print('Oscar is {}'.format(m.group('word')))
+else:
+    print('Not found')
 
 
 p = re.compile('a[bcd]*b', re.VERBOSE)
