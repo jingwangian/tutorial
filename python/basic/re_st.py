@@ -41,7 +41,14 @@ finditer(): same as findall but return a iterator.
 DONT FORGET!:
 . + * ? [] $ ^ () {} | \
 
+re.search --->_sre.SRE_Match
+['end', 'endpos', 'expand', 'group', 'groupdict', 'groups', 'lastgroup', 'lastindex', 'pos', 're', 'regs', 'span', 'start', 'string']
 
+(...)
+    Matches whatever regular expression is inside the parentheses, and indicates the start and end of a group; the contents of a group can be retrieved after a match has been performed, and can be matched later in the string with the \number special sequence, described below. To match the literals '(' or ')', use \( or \), or enclose them inside a character class: [(] [)].
+
+(?=...)
+    Matches if ... matches next, but doesn’t consume any of the string. This is called a lookahead assertion. For example, Isaac (?=Asimov) will match 'Isaac ' only if it’s followed by 'Asimov'.
 
 '''
 import re
@@ -92,3 +99,12 @@ else:
 p = re.compile('a[bcd]*b', re.VERBOSE)
 m = p.match('abbcbd')
 print(m.group(0))
+
+
+m = re.search(r'\w*(?=is 15)', exampleString)
+print(m.group(0))
+
+
+m = regex.search(r'(aa)', 'x1aaababacabbaacaaada')
+print(m.pos, m.string, m.start(), m.span())
+print(m.groups())

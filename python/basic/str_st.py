@@ -61,8 +61,28 @@ splitlines()
 maketrans():
 translate(table)
 
-
 zfill(width):Return a copy of the string left filled with ASCII '0' digits to make a string of length width. A leading sign prefix ('+'/'-') is handled by inserting the padding after the sign character rather than before. The original string is returned if width is less than or equal to len(s).
+
+Fromat syntax:
+replacement_field ::=  "{" [field_name] ["!" conversion] [":" format_spec] "}"
+field_name        ::=  arg_name ("." attribute_name | "[" element_index "]")*
+arg_name          ::=  [identifier | integer]
+attribute_name    ::=  identifier
+element_index     ::=  integer | index_string
+index_string      ::=  <any source character except "]"> +
+conversion        ::=  "r" | "s" | "a"
+format_spec       ::=  <described in the next section>
+
+format_spec     ::=  [[fill]align][sign][#][0][width][grouping_option][.precision][type]
+fill            ::=  <any character>
+align           ::=  "<" | ">" | "=" | "^"
+sign            ::=  "+" | "-" | " "
+width           ::=  integer
+grouping_option ::=  "_" | ","
+precision       ::=  integer
+type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" | "o" | "s" | "x" | "X" | "%"
+
+https://docs.python.org/3/library/string.html#formatstrings
 '''
 
 s1 = 'hello world china people, lllleedd'

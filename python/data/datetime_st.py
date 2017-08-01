@@ -48,3 +48,12 @@ def printkey(obj):
         return ',' if n % 8 > 0 else None
     [print(x, end=f(i + 1)) for i, x in (enumerate(dir(obj)))]
 printkey(datetime.datetime)
+
+t1 = datetime.time()
+
+
+def printkey(obj):
+    def f(n):
+        return ',' if n % 8 > 0 else None
+    [print(x, end=f(i + 1)) for i, x in (enumerate(dir(obj)))]
+printkey(t1)
