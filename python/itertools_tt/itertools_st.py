@@ -40,5 +40,6 @@ print(list(it.product([1, 2, 3, 4], repeat=2)))
 print(list(it.permutations([1, 2, 3, 4], 2)))
 
 
+print(list(it.pairwise([1, 2, 3, 4])))
 # [('A', 'B'), ('A', 'C'), ('A', 'D'), ('A', 'E'), ('B', 'C'), ('B', 'D'), ('B', 'E'), ('C', 'D'), ('C', 'E'), ('D', 'E')]
 # print(list(it.combinations('ABCDE', 2)))
