@@ -1,0 +1,183 @@
+Head file: stdio.h or cstdio( c++ )
+
+Stream: Abstract handle to interact with physical devices such as  Keyboards, printers,terminals,disk and so on.
+
+Three standard streams: stdin, stdout and stderr.
+Other streams: A pointer to a FILE used to identifiy a stream.
+
+Indicators: Error, EOF, Position
+
+Functions
+---------------------------------------
+Operations on files:
+    remove
+        Remove file (function )
+
+    rename
+        Rename file (function )
+
+    tmpfile
+        Open a temporary file (function )
+
+    tmpnam
+        Generate temporary filename (function )
+
+File access:
+    fclose
+        Close file (function )
+
+    fflush
+        Flush stream (function )
+
+    fopen
+        Open file (function )
+
+    freopen
+        Reopen stream with different file or mode (function )
+
+    setbuf
+        Set stream buffer (function )
+
+    setvbuf
+        Change stream buffering (function )
+
+Formatted output:
+    printf
+        Print formatted data to stdout (function )
+
+    fprintf
+        Write formatted data to stream (function )
+
+    snprintf
+        Write formatted output to sized buffer (function )
+
+    sprintf
+        Write formatted data to string (function )
+
+    vfprintf
+        Write formatted data from variable argument list to stream (function )
+
+    vprintf
+        Print formatted data from variable argument list to stdout (function )
+
+    vsnprintf
+        Write formatted data from variable argument list to sized buffer (function )
+
+    vsprintf
+        Write formatted data from variable argument list to string (function )
+
+
+Formatted input:
+    fscanf
+        Read formatted data from stream (function )
+
+    scanf
+        Read formatted data from stdin (function )
+
+    sscanf
+        Read formatted data from string (function )
+
+    vfscanf
+        Read formatted data from stream into variable argument list (function )
+
+    vscanf
+        Read formatted data into variable argument list (function )
+
+    vsscanf
+        Read formatted data from string into variable argument list (function )
+
+Character output:
+    fputc
+        Write character to stream (function )
+
+    fputs
+        Write string to stream (function )
+
+    putc
+        Write character to stream (function )
+
+    putchar
+        Write character to stdout (function )
+
+    puts
+        Write string to stdout (function )
+
+Character input:
+    fgetc
+        Get character from stream (function )
+
+    fgets
+        Get string from stream (function )
+
+    getc
+        Get character from stream (function )
+
+    getchar
+        Get character from stdin (function )
+
+    gets
+        Get string from stdin (function )
+
+    ungetc
+        Unget character from stream (function )
+
+Direct input/output:
+    fread
+        Read block of data from stream (function )
+
+    fwrite
+        Write block of data to stream (function )
+
+
+File positioning:
+    fgetpos
+        Get current position in stream (function )
+
+    fseek
+        Reposition stream position indicator (function )
+
+    fsetpos
+        Set position indicator of stream (function )
+
+    ftell
+        Get current position in stream (function )
+
+    rewind
+        Set position of stream to the beginning (function )
+
+Error-handling:
+    clearerr
+        Clear error indicators (function )
+
+    feof
+        Check end-of-file indicator (function )
+
+    ferror
+        Check error indicator (function )
+
+    perror
+        Print error message (function )
+
+
+Macros:
+---------------------------------------
+    BUFSIZ
+        Buffer size (constant )
+
+    EOF
+        End-of-File (constant )
+
+    FILENAME_MAX
+        Maximum length of file names (constant )
+
+    FOPEN_MAX
+        Potential limit of simultaneous open streams (constant )
+
+    L_tmpnam
+        Minimum length for temporary file name (constant )
+
+    NULL
+        Null pointer (macro )
+
+    TMP_MAX
+        Number of temporary files (constant )
