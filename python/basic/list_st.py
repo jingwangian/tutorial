@@ -103,3 +103,6 @@ print([(k, s1.count(k)) for k in sorted(keys)])
 #     return ',' if n % 8 > 0 else None
 # print(dir(l1))
 # [print(x, end=f(i + 1)) for i, x in (enumerate(dir(l1)))]
+
+
+print(slice(1, 20))
