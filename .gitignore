@@ -102,5 +102,5 @@ ENV/
 
 .project
 .pydevproject
-.sublime-workspace
-.sublime-project
+*.sublime-workspace
+*.sublime-project
