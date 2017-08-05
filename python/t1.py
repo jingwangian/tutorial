@@ -13,11 +13,18 @@
 # with open(dest_file_name, 'w') as wf:
 #     [wf.write(x.lstrip()) for x in code_lines]
 
-[print('test_pvar_{}();'.format(i)) for i in range(1, 13)]
-print(sorted({41: 100, 1: 'D', 2: 'B', 3: 'B', 4: 'E', 5: 'A'}))
+import subprocess
+import shlex
+from subprocess import Popen, PIPE
+
+df_cmd_list = ['ssh,wangj@ub{},df,-h'.format(x) for x in range(1, 11)]
 
 
-s1 = 'abcdefg'
-
-print([x for x in s1])
-# print(dir(s1))
+for df_cmd in df_cmd_list:
+    print(df_cmd)
+    dfcmd = df_cmd.split(',')
+    print(dfcmd)
+    ret = subprocess.run(dfcmd, stdout=subprocess.PIPE)
+    [print(ret) for ret in filter(lambda x: x.find('/dev/xvda1') != -1, ret.stdout.decode().splitlines())]
+    # [print(x) for x in ret.stdout.decode().splitlines()]
+    # break
