@@ -17,6 +17,13 @@ import subprocess
 import shlex
 from subprocess import Popen, PIPE
 
+s1 = 'abcd{}'
+print(s1.format('hello'))
+l1 = ['a', 'b', 'c']
+s2 = '\n'.join(l1)
+print(s2)
+exit(0)
+
 df_cmd_list = ['ssh,wangj@ub{},df,-h'.format(x) for x in range(1, 11)]
 
 

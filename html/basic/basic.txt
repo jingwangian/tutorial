@@ -1,0 +1,31 @@
+Documents
+    Start document type declaration: <!DOCTYPE html>.
+    The HTML document itself begins with <html> and ends with </html>.
+    The visible part of the HTML document is between <body> and </body>.
+
+Headings
+    <h1> to <h6> tags.
+
+Paragraphs
+    defined with the <p> tag
+
+Links
+    defined with the <a> tag:
+    Example:  <a href="https://www.w3schools.com">This is a link</a>
+
+Images
+    fined with the <img> tag.
+    Example:  <img src="w3schools.jpg" alt="W3Schools.com" width="104" height="142">
+
+Elements
+    usually consists of a start tag and end tag, with the content inserted in between:
+     <tagname>Content goes here...</tagname>
+    Elements can be nested
+    The <html> element defines the whole document.
+    The <body> element defines the document body.
+
+Attributes
+    All HTML elements can have attributes
+    Attributes provide additional information about an element
+    Attributes are always specified in the start tag
+    Attributes usually come in name/value pairs like: name="value"
