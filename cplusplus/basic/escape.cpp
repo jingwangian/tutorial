@@ -29,5 +29,6 @@ int main(void)
     cout<<"hello world\rxxxx"<<endl;
     cout<<"hello world\nxxxx"<<endl;
 
+    cout<<"hello world\ooo"<<endl;
     return 0;
 }
