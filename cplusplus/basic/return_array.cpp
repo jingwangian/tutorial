@@ -44,14 +44,17 @@ int a[3][4] = {
 using namespace std;
 
 // function declaration:
+int *get_one_dim_array();
+int **get_two_dim_array();
 double getAverage(int arr[], int size);
-void changeArray(int arr[], int size);
 void printArray(int arr[], int size);
 void printArraybyPointer(int *arr, int size);
+void print2dimArray(int **arr, int size_a, int size_b);
 int main ()
 {
    // an int array with 5 elements.
-   int balance[5] = {1000, 2, 3, 17, 50};
+   int *balance=get_one_dim_array();
+   int **two_dimarr = get_two_dim_array();
    double avg;
 
    // pass pointer to the array as an argument.
@@ -60,13 +63,11 @@ int main ()
    // output the returned value
    cout << "Average value is: " << avg << endl;
 
-   changeArray(balance, 5);
    printArray(balance, 5);
-   printArraybyPointer(balance, 5);
+   print2dimArray(two_dimarr,3,4);
+
    return 0;
 }
-
-
 
 double getAverage(int arr[], int size)
 {
@@ -83,23 +84,32 @@ double getAverage(int arr[], int size)
    return avg;
 }
 
-/*
-* Here reference to arr[] is passed into the function
-* Change the arr[] in the function will afffect the
-* actual value of arr[] out of this function
-* If change the 1st parameter to be "const int arr[]"
-* then the content of arr[] can't be changed
-*/
-//void changeArray(const int arr[], int size)
-void changeArray(int arr[], int size)
+int *get_one_dim_array()
 {
-   int    i;
+  /*
+  * static must be used here.
+  * If using "int arr[]={1,2,3,4,5};"
+  * the value of arr can't be fetched out of the function
+  */
+  static int arr[]={1,2,3,4,5};
 
-   for (i = 0; i < size; ++i)
-   {
-      arr[i]=100+i;
-   }
-   cout<<endl;
+  return arr;
+}
+
+int **get_two_dim_array()
+{
+  /*
+  * static must be used here.
+  * If using "int arr[]={1,2,3,4,5};"
+  * the value of arr can't be fetched out of the function
+  */
+  static int a[3][4] = {
+   {0, 1, 2, 3} ,   /*  initializers for row indexed by 0 */
+   {4, 5, 6, 7} ,   /*  initializers for row indexed by 1 */
+   {8, 9, 10, 11}   /*  initializers for row indexed by 2 */
+};
+
+  return (int**)a;
 }
 
 void printArray(int arr[], int size)
@@ -114,20 +124,18 @@ void printArray(int arr[], int size)
   cout<<endl;
 }
 
-void printArraybyPointer(int *arr, int size)
+void print2dimArray(int **arr, int size_a, int size_b)
 {
-  cout<<"Enter printArraybyPointer"<<endl;
+  cout<<"Enter print2dimArray"<<endl;
   int    i = 0;
-  for(i=0;i<size; i++)
+  int    j = 0;
+  for(i=0;i<size_a; i++)
   {
-    cout<<"arr["<<i<<"] = "<< arr[i]<<endl;
+    for(j=0;j<size_b; j++)
+    {
+      cout<<"arr["<<i<<"]["<<j<<"] = "<< arr[i][j]<<endl;
+    }
+    cout<<endl;
   }
-  cout<<"arr[-1] = "<< arr[-1]<<endl;
-  cout<<"arr[-2] = "<< arr[-2]<<endl;
-  cout<<"arr[size+1] = "<< arr[size+1]<<endl;
-  cout<<"address of arr[5] = "<< &arr[5]<<endl;
-  cout<<"address of arr[4] = "<< &arr[4]<<endl;
-  cout<<"address of arr[0] = "<< &arr[0]<<endl;
-  cout<<"address of arr[-1] = "<< &arr[-1]<<endl;
-  cout<<"address of arr[-2] = "<< &arr[-2]<<endl;
+  cout<<endl;
 }
