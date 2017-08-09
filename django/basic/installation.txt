@@ -1,0 +1,11 @@
+1. Create a python enviroment
+    python3 -m venv myvenv
+
+2. Active the virtual python enviroment
+    source myvenv/bin/active
+
+3. Update the pip or pip3
+    pip install --upgrade pip
+
+4. Install Django
+    pip install django

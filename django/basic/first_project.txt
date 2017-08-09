@@ -1,0 +1,117 @@
+1. Create your project
+    django-admin startproject mysite
+
+    django-admin.py -- a script used to create the directories and files for you.
+
+2. The directory structure
+    mysite
+    ├───manage.py
+    └───mysite
+            settings.py
+            urls.py
+            wsgi.py
+            __init__.py
+
+    manage.py
+        is a script that helps with management of the site. With it we will be able (amongst other things) to start a web server on our computer without installing anything else.
+    settings.py:
+        contains the configuration of your website
+    urls.py:
+        contains a list of patterns used by urlresolver.
+
+3. settings.py
+    (1). set TIME_ZONE
+        e.g., TIME_ZONE = 'Europe/Berlin'
+    (2). Add a path for static file
+        STATIC_URL = '/static/'
+        STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    (3). Set the ALLOWED_HOSTS
+        e.g., ALLOWED_HOSTS = ['127.0.0.1', '<your_username>.pythonanywhere.com']
+
+    (4). Setup a database: DATABASES
+        DATABASES = {
+                'default': {
+                    'ENGINE': 'django.db.backends.sqlite3',
+                    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+                    }
+                    }
+        default database is sqlit3, but can support mysql, postgresql and so on.
+
+4. Create a database
+    python manage.py migrate
+    The default datbase and tables will be created.
+
+5. Starting the server
+    python manage.py runserver
+
+    you can indicate the ipaddress and port listen on
+    python manage.py runserver 0.0.0.0:8080
+
+
+6. Create your app
+    python manage.py startapp blog
+
+    mysite
+    ├── blog   ---directory added for the app blog
+    │   ├── __init__.py
+    │   ├── admin.py
+    │   ├── apps.py
+    │   ├── migrations
+    │   │   └── __init__.py
+    │   ├── models.py
+    │   ├── tests.py
+    │   └── views.py
+    ├── db.sqlite3
+    ├── manage.py
+    └── mysite
+        ├── __init__.py
+        ├── settings.py
+        ├── urls.py
+        └── wsgi.py
+
+7. Modify the mysite/settings.py, add app
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'blog',   ---- new app to be added
+    ]
+
+8. Define the models in your blog/models.py
+
+    from django.db import models
+    from django.utils import timezone
+    class Post(models.Model):
+        author = models.ForeignKey('auth.User')
+        title = models.CharField(max_length=200)
+        text = models.TextField()
+        created_date = models.DateTimeField(
+                default=timezone.now)
+        published_date = models.DateTimeField(
+                blank=True, null=True)
+
+        def publish(self):
+            self.published_date = timezone.now()
+            self.save()
+
+        def __str__(self):
+            return self.title
+
+9. Create tables for models in your database
+ created in the models
+    [cmd] python manage.py makemigrations blog
+    [cmd] python manage.py migrate blog
+
+10. Registe the created modles in the admin
+
+    Add following into blog/admin.py
+    from django.contrib import admin
+    from .models import Post
+
+    admin.site.register(Post)
+
+11. Create a superuser
+    [cmd] python manage.py createsuperuser
