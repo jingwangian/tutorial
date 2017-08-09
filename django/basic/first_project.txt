@@ -69,7 +69,7 @@
         ├── urls.py
         └── wsgi.py
 
-7. Modify the mysite/settings.py, add app
+7. Modify the mysite/settings.py, add blog app
     INSTALLED_APPS = [
         'django.contrib.admin',
         'django.contrib.auth',
@@ -80,7 +80,21 @@
         'blog',   ---- new app to be added
     ]
 
-8. Define the models in your blog/models.py
+8. change the mysite/urls.py
+    urlpatterns = [
+        url(r'^admin/', include(admin.site.urls)),
+        url(r'^blog/', include('blog.urls')),   ---add this line
+    ]
+
+9. Create a urls.py in blog directory.Add urlpatterns as following
+    from django.conf.urls import include, url
+    from . import views
+
+    urlpatterns = [
+        url(r'^$/', views.blog_list, name='blog_list'),
+    ]
+
+10. Define the models in your blog/models.py
 
     from django.db import models
     from django.utils import timezone
@@ -100,12 +114,12 @@
         def __str__(self):
             return self.title
 
-9. Create tables for models in your database
+11. Create tables for models in your database
  created in the models
     [cmd] python manage.py makemigrations blog
     [cmd] python manage.py migrate blog
 
-10. Registe the created modles in the admin
+12. Registe the created modles in the admin
 
     Add following into blog/admin.py
     from django.contrib import admin
@@ -113,5 +127,5 @@
 
     admin.site.register(Post)
 
-11. Create a superuser
+13. Create a superuser
     [cmd] python manage.py createsuperuser

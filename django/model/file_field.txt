@@ -1,0 +1,33 @@
+FileField
+-------------------
+Define:
+    class FileField(upload_to=None, max_length=100, **options)
+
+Description: A file-upload field
+
+FileField.upload_to:
+    provides a way of setting the upload directory and file name, and can be set in two ways.
+    In both cases, the value is passed to the Storage.save() method.
+
+    Way1: specify a string value, it may contain strftime() formatting, which will be replaced by the date/time of the file upload.
+    Example:
+    class MyModel(models.Model):
+        # file will be uploaded to MEDIA_ROOT/uploads
+        upload = models.FileField(upload_to='uploads/')
+        # or...
+        # file will be saved to MEDIA_ROOT/uploads/2015/01/30
+        upload = models.FileField(upload_to='uploads/%Y/%m/%d/')
+
+    Way2: upload_to may also be a callable, such as a function. This will be called to obtain the upload path, including the filename. This callable must accept two arguments and return a Unix-style path (with forward slashes) to be passed along to the storage system.
+
+    Example:
+    def user_directory_path(instance, filename):
+        # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+        return 'user_{0}/{1}'.format(instance.user.id, filename)
+
+    class MyModel(models.Model):
+        upload = models.FileField(upload_to=user_directory_path)
+
+FileField.storage:
+    A storage object, which handles the storage and retrieval of your files.
+    The default form widget for this field is a ClearableFileInput.

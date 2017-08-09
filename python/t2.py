@@ -20,4 +20,10 @@ double  mutable     switch  while
 dynamic_cast    namespace   template     '''
 
 
-[print(x) for x in sorted(s1.split())]
+# [print(x) for x in sorted(s1.split())]
+
+import subprocess
+
+lscmd = 'aws s3 ls s3://flight.pq.11'
+ret = subprocess.run(lscmd.split(' '), stdout=subprocess.PIPE)
+[print(x) for x in map(lambda x: x.strip().split(' ')[1].split('/')[0], ret.stdout.decode().splitlines())]
