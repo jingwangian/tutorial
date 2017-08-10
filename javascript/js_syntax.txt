@@ -1,0 +1,55 @@
+
+define variable: var
+
+comments:
+    one line comments: //
+    multi-line comments: /**/
+
+Case Sensitive: yes
+
+Camel Case:
+    JavaScript programmers tend to use camel case that starts with a lowercase letter:
+    Example: firstName, lastName, masterCard, interCity.
+
+Character Set:
+    uses the Unicode character set.
+
+Semicolons:
+    used to separate the statments
+
+White Space:
+    avaScript ignores multiple spaces. You can add white space to your script to make it more readable.
+    Example:
+        var person = "Hege";
+        var person="Hege";
+
+Line Length and Line Breaks:
+    length not longer than 80 characters.
+    support break long lines into multipul lines
+    example:
+        <script>
+        document.getElementById("demo").innerHTML =
+        "Hello Dolly!";
+        </script>
+
+Code Blocks:
+    function myFunction() {
+    document.getElementById("demo1").innerHTML = "Hello Dolly!";
+    document.getElementById("demo2").innerHTML = "How are you?";
+    }
+
+Declare variables:
+    Declare multi variables in one line:
+    var person = "John Doe", carName = "Volvo", price = 200;
+
+Value = undefined:
+    A variable declared without a value will have the value undefined.
+
+Re-Declaring Variables:
+    If you re-declare a JavaScript variable, it will not lose its value.
+
+string-concatenate:
+    var x = 2 + 3 + "5"  ---> '55'
+    x = 5 + 5;  ---> 10
+    y = "5" + 5;  ---> 55
+    z = "Hello" + 5; ---> Hello5

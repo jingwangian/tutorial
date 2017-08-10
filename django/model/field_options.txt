@@ -1,0 +1,124 @@
+Field options
+===================
+
+Field.null
+-------------------
+    If True, Django will store empty values as NULL in the database. Default is False.
+
+
+Field.blank
+-------------------
+    If True, the field is allowed to be blank. Default is False.
+    Note that this is different than null. null is purely database-related, whereas blank is validation-related.
+    If a field has blank=True, form validation will allow entry of an empty value.
+    If a field has blank=False, the field will be required.
+
+
+Field.choices
+-------------------
+    An iterable (e.g., a list or tuple) consisting itself of iterables of exactly two items (e.g. [(A, B), (A, B) ...]) to use as choices for this field. If this is given, the default form widget will be a select box with these choices instead of the standard text field.
+
+    The first element in each tuple is the actual value to be set on the model, and the second element is the human-readable name. For example:
+    YEAR_IN_SCHOOL_CHOICES = (
+        ('FR', 'Freshman'),
+        ('SO', 'Sophomore'),
+        ('JR', 'Junior'),
+        ('SR', 'Senior'),
+    )
+
+
+Field.db_column
+-------------------
+    The name of the database column to use for this field. If this isn’t given, Django will use the field’s name.
+    If your database column name is an SQL reserved word, or contains characters that aren’t allowed in Python variable names – notably, the hyphen – that’s OK. Django quotes column and table names behind the scenes.
+
+
+Field.db_index
+-------------------
+    If True, a database index will be created for this field.
+
+
+Field.db_tablespace
+-------------------
+    The name of the database tablespace to use for this field’s index, if this field is indexed.
+    The default is the project’s DEFAULT_INDEX_TABLESPACE setting, if set, or the db_tablespace of the model, if any. If the backend doesn’t support tablespaces for indexes, this option is ignored.
+
+
+Field.default
+-------------------
+    The default value for the field. This can be a value or a callable object. If callable it will be called every time a new object is created.
+    The default can’t be a mutable object (model instance, list, set, etc.), as a reference to the same instance of that object would be used as the default value in all new model instances. Instead, wrap the desired default in a callable. For example, if you want to specify a default dict for JSONField, use a function:
+    Example:
+        def contact_default():
+            return {"email": "to1@example.com"}
+
+        contact_info = JSONField("ContactInfo", default=contact_default)
+
+    Note: lambdas can’t be used for field options like default because they can’t be serialized by migrations.
+
+
+
+Field.editable
+-------------------
+    If False, the field will not be displayed in the admin or any other ModelForm. They are also skipped during model validation. Default is True.
+
+
+Field.error_messages
+-------------------
+    The error_messages argument lets you override the default messages that the field will raise. Pass in a dictionary with keys matching the error messages you want to override.
+
+
+Field.help_text
+-------------------
+    Extra “help” text to be displayed with the form widget. It’s useful for documentation even if your field isn’t used on a form.
+
+    Note that this value is not HTML-escaped in automatically-generated forms. This lets you include HTML in help_text if you so desire. For example:
+
+
+Field.primary_key
+-------------------
+    If True, this field is the primary key for the model.
+
+    If you don’t specify primary_key=True for any field in your model, Django will automatically add an AutoField to hold the primary key, so you don’t need to set primary_key=True on any of your fields unless you want to override the default primary-key behavior. For more, see Automatic primary key fields.
+
+    primary_key=True implies null=False and unique=True. Only one primary key is allowed on an object.
+
+    The primary key field is read-only. If you change the value of the primary key on an existing object and then save it, a new object will be created alongside the old one.
+
+
+Field.unique
+-------------------
+    If True, this field must be unique throughout the table.
+
+    This is enforced at the database level and by model validation. If you try to save a model with a duplicate value in a unique field, a django.db.IntegrityError will be raised by the model’s save() method.
+
+    This option is valid on all field types except ManyToManyField and OneToOneField.
+
+    Note that when unique is True, you don’t need to specify db_index, because unique implies the creation of an index.
+
+
+Field.unique_for_date
+-------------------
+    Set this to the name of a DateField or DateTimeField to require that this field be unique for the value of the date field.
+
+    For example, if you have a field title that has unique_for_date="pub_date", then Django wouldn’t allow the entry of two records with the same title and pub_date.
+
+
+Field.unique_for_month
+-------------------
+    Like unique_for_date, but requires the field to be unique with respect to the month.
+
+
+Field.unique_for_year
+-------------------
+    Like unique_for_date and unique_for_month.
+
+
+Field.verbose_name
+-------------------
+    A human-readable name for the field. If the verbose name isn’t given, Django will automatically create it using the field’s attribute name, converting underscores to spaces. See Verbose field names.
+
+
+Field.validators
+-------------------
+    A list of validators to run for this field. See the validators documentation for more information.
