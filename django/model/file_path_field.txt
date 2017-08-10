@@ -1,0 +1,32 @@
+FilePathField
+-------------------
+Define: class FilePathField(path=None, match=None, recursive=False, max_length=100, **options)
+
+A CharField whose choices are limited to the filenames in a certain directory on the filesystem. Has three special arguments, of which the first is required:
+
+FilePathField.path (Required)
+    The absolute filesystem path to a directory from which this FilePathField should get its choices. Example: "/home/images".
+
+FilePathField.match (Optional)
+    A regular expression, as a string, that FilePathField will use to filter filenames.
+    Note that the regex will be applied to the base filename, not the full path.
+    Example: "foo.*\.txt$", which will match a file called foo23.txt but not bar.txt or foo23.png.
+
+FilePathField.recursive (Optional)
+    Either True or False. Default is False.
+    Specifies whether all subdirectories of path should be included
+
+FilePathField.allow_files (Optional)
+    Either True or False. Default is True.
+    Specifies whether files in the specified location should be included. Either this or allow_folders must be True.
+
+FilePathField.allow_folders (Optional)
+    Either True or False. Default is False.
+    Specifies whether folders in the specified location should be included. Either this or allow_files must be True.
+
+Example:
+    FilePathField(path="/home/images", match="foo.*", recursive=True)
+
+    will match /home/images/foo.png but not /home/images/foo/bar.png because the match applies to the base filename (foo.png and bar.png).
+
+FilePathField instances are created in your database as varchar columns with a default max length of 100 characters. As with other fields, you can change the maximum length using the max_length argument.

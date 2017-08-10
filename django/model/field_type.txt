@@ -1,5 +1,7 @@
 Field types
 -------------------
+Every Field following is a class.
+
 AutoField: Interger Field and automatically increments.
 
 BigAutoField: 64-bit integer, same as AutoField.
@@ -67,50 +69,108 @@ EmailField:
     It uses EmailValidator to validate the input.
 
 FileField:
-    See the filefield.txt
-    Define: class FileField(upload_to=None, max_length=100, **options)
-    A file-upload field
+    See the file_field.txt
+FileField and FieldFile:
+    See the file_field.txt
 
-    FileField.upload_to:
-        provides a way of setting the upload directory and file name, and can be set in two ways. In both cases, the value is passed to the Storage.save() method.
+FilePathField:
+    See the file_path_field.txt
 
-        way1: specify a string value, it may contain strftime() formatting, which will be replaced by the date/time of the file upload.
-        Example:
-        class MyModel(models.Model):
-            # file will be uploaded to MEDIA_ROOT/uploads
-            upload = models.FileField(upload_to='uploads/')
-            # or...
-            # file will be saved to MEDIA_ROOT/uploads/2015/01/30
-            upload = models.FileField(upload_to='uploads/%Y/%m/%d/')
+FloatField:
+    A floating-point number represented in Python by a float instance.
+    The default form widget for this field is a NumberInput when localize is False or TextInput otherwise.
 
-        way2: upload_to may also be a callable, such as a function. This will be called to obtain the upload path, including the filename. This callable must accept two arguments and return a Unix-style path (with forward slashes) to be passed along to the storage system.
+ImageField:
+    Define: class ImageField(upload_to=None, height_field=None, width_field=None, max_length=100, **options)
 
-        Example:
-        def user_directory_path(instance, filename):
-            # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-            return 'user_{0}/{1}'.format(instance.user.id, filename)
+    Inherits all attributes and methods from FileField, but also validates that the uploaded object is a valid image.
 
-        class MyModel(models.Model):
-            upload = models.FileField(upload_to=user_directory_path)
+    In addition to the special attributes that are available for FileField, an ImageField also has height and width attributes.
 
-    FileField.storage:
-        A storage object, which handles the storage and retrieval of your files.
-        The default form widget for this field is a ClearableFileInput.
+    To facilitate querying on those attributes, ImageField has two extra optional arguments:
 
-FileField and FieldFile
-FilePathField
-FloatField
-ImageField
-IntegerField
-GenericIPAddressField
-NullBooleanField
-PositiveIntegerField
-PositiveSmallIntegerField
-SlugField
-SmallIntegerField
-TextField
-TimeField
-URLField
-UUIDField
+    ImageField.height_field:
+        Name of a model field which will be auto-populated with the height of the image each time the model instance is saved.
 
-Every Field is a class.
+    ImageField.width_field:
+        Name of a model field which will be auto-populated with the width of the image each time the model instance is saved.
+
+    Requires the Pillow library.
+
+    ImageField instances are created in your database as varchar columns with a default max length of 100 characters. As with other fields, you can change the maximum length using the max_length argument.
+
+    The default form widget for this field is a ClearableFileInput.
+
+GenericIPAddressField:
+    Define: class GenericIPAddressField(protocol='both', unpack_ipv4=False, **options)
+
+    An IPv4 or IPv6 address, in string format (e.g. 192.0.2.30 or 2a02:42fe::4).
+    The default form widget for this field is a TextInput.
+
+    The IPv6 address normalization follows RFC 4291#section-2.2 section 2.2, including using the IPv4 format suggested in paragraph 3 of that section, like ::ffff:192.0.2.0. For example, 2001:0::0:01 would be normalized to 2001::1, and ::ffff:0a0a:0a0a to ::ffff:10.10.10.10. All characters are converted to lowercase.
+
+    GenericIPAddressField.protocol:
+        Limits valid inputs to the specified protocol. Accepted values are 'both' (default), 'IPv4' or 'IPv6'. Matching is case insensitive.
+
+    GenericIPAddressField.unpack_ipv4:
+        Unpacks IPv4 mapped addresses like ::ffff:192.0.2.1. If this option is enabled that address would be unpacked to 192.0.2.1. Default is disabled. Can only be used when protocol is set to 'both'.
+
+    If you allow for blank values, you have to allow for null values since blank values are stored as null.
+
+NullBooleanField:
+    Like a BooleanField, but allows NULL as one of the options. Use this instead of a BooleanField with null=True. The default form widget for this field is a NullBooleanSelect.
+
+IntegerField:
+    An integer. Values from -2147483648 to 2147483647 are safe in all databases supported by Django.
+    The default form widget for this field is a NumberInput when localize is False or TextInput otherwise.
+
+SmallIntegerField:
+    Like an IntegerField, but only allows values under a certain (database-dependent) point. Values from -32768 to 32767 are safe in all databases supported by Django.
+
+PositiveIntegerField:
+    Like an IntegerField, but must be either positive or zero (0). Values from 0 to 2147483647 are safe in all databases supported by Django. The value 0 is accepted for backward compatibility reasons.
+
+PositiveSmallIntegerField:
+    Like a PositiveIntegerField, but only allows values under a certain (database-dependent) point. Values from 0 to 32767 are safe in all databases supported by Django.
+
+SlugField:
+    Define: class SlugField(max_length=50, **options)
+
+    Slug is a newspaper term. A slug is a short label for something, containing only letters, numbers, underscores or hyphens. They’re generally used in URLs.
+
+    Like a CharField, you can specify max_length (read the note about database portability and max_length in that section, too). If max_length is not specified, Django will use a default length of 50.
+
+    Implies setting Field.db_index to True.
+
+    It is often useful to automatically prepopulate a SlugField based on the value of some other value. You can do this automatically in the admin using prepopulated_fields.
+
+    SlugField.allow_unicode:
+        If True, the field accepts Unicode letters in addition to ASCII letters. Defaults to False.
+
+TextField:
+    A large text field. The default form widget for this field is a Textarea.
+
+    If you specify a max_length attribute, it will be reflected in the Textarea widget of the auto-generated form field. However it is not enforced at the model or database level. Use a CharField for that.
+
+TimeField:
+    Define: class TimeField(auto_now=False, auto_now_add=False, **options)
+
+    A time, represented in Python by a datetime.time instance. Accepts the same auto-population options as DateField.
+
+    The default form widget for this field is a TextInput. The admin adds some JavaScript shortcuts.
+
+URLField:
+    Define: class URLField(max_length=200, **options)
+
+    A CharField for a URL.
+
+    The default form widget for this field is a TextInput.
+
+
+UUIDField:
+    A field for storing universally unique identifiers. Uses Python’s UUID class.
+    When used on PostgreSQL, this stores in a uuid datatype, otherwise in a char(32).
+
+    Universally unique identifiers are a good alternative to AutoField for primary_key.
+    The database will not generate the UUID for you, so it is recommended to use default:
+
