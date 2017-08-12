@@ -45,10 +45,12 @@ print('s4 len:', len(s4))
 
 # [s1.add(x) for x in [1, 2, 3, 4]]
 
-print(s1)
-print(s2)
+print('s1:{}'.format(s1))
+print('s1_b:{}'.format(s1_b))
+print('s2:{}'.format(s2))
 
-print(s1 == s1_b)
+
+print('s1 == s1_b : {}'.format(s1 == s1_b))
 print('s1 == fs1:', s1 == fs1)
 
 d1 = dict()
@@ -62,9 +64,13 @@ if fs1 in d1:
 print('s1.difference(s2):', s1.difference(s2))
 print('s2.difference(s1):', s2.difference(s1))
 
+# symmetric_difference
+print('s1.symmetric_difference(s2):', s1.symmetric_difference(s2))
+
 # Using difference update
 s3 = s1.copy()
 
+print('s3:{}'.format(s3))
 print('s3.issubset(s1)', s3.issubset(s1))
 print('s3.issuperset(s1)', s3.issuperset(s1))
 print('s3 > s1', s3 > s1)
@@ -77,8 +83,7 @@ print('s1.union(s2):', s1.union(s2))
 # Intersection
 print('s1.intersection(s2):', s1.intersection(s2))
 
-# symmetric_difference
-print('s1.symmetric_difference(s2):', s1.symmetric_difference(s2))
+
 # Using Discard
 s3.discard(3)
 print(s3)

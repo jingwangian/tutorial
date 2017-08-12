@@ -1,0 +1,92 @@
+EC2 study
+-------------------
+This document description the EC2 on AWS
+
+
+EC2: Elastic Compute Cloud
+
+EBS: Elastic Block Store
+
+ECS:
+
+VPC: Virtual private clouds
+
+AMI: Amazon Machine Image, is a template that contains a software configuration
+    for example, an operating system, an application server, and applications
+    • A template for the root volume for the instance (for example, an operating system, an application server, and applications)
+    • Launch permissions that control which AWS accounts can use the AMI to launch instances
+    • A block device mapping that specifies the volumes to attach to the instance when it's launched
+
+instance type:
+    An instance type essentially determines the hardware of the host computer used for your instance. Each instance type offers different compute and memory capabilities.
+
+instance store volumes:
+    Storage volumes for temporary data that's deleted when you stop or terminate your instance
+
+Amazon EBS volumes:
+    Persistent storage volumes for your data using Amazon Elastic Block Store (Amazon EBS)
+
+region:
+    Multiple physical locations for your resources, such as instances and Amazon EBS volumes
+
+security groups:
+    A firewall that enables you to specify the protocols, ports, and source IP ranges that can reach your instances
+
+Elastic IP addresses:
+    Static IPv4 addresses for dynamic cloud computing
+
+Metadata(tags):
+    you can create and assign to your Amazon EC2 resources
+
+VPC:
+    Virtual networks you can create that are logically isolated from the rest of the AWS cloud, and that you can optionally connect to your own network, known as virtual private clouds
+
+
+When instance stopped
+-------------------
+    1. Can start again
+    2. All of its Amazon EBS volumes remain attached.
+    3. not charged for additional instance hours while the instance is in a stopped state
+    4. is billed using typical Amazon EBS prices
+    5. can attach or detach Amazon EBS volumes
+    6. create an AMI from the instance
+    7. can change the kernel, RAM disk, and instance type.
+
+When instance terminated
+-------------------
+1. instance performs a normal shutdown
+2. the attached EBS volumes are deleted unless the volume's deleteOnTermination attribute is set to false .
+3. The instance itself is also deleted, and you can't start the instance again.
+4. you can disable instance termination by setting disableApiTermination attribute to true.
+5. To control the behavior of an instance shutdown, such as shutdown -h in Linux, set the instanceInitiatedShutdownBehavior instance attribute to stop or terminate as desired.
+
+
+AMI
+-------------------
+All AMIs are categorized as either backed by Amazon EBS, which means that the root device for an instance launched from the AMI is an Amazon EBS volume, or backed by instance store, which means that the root device for an instance launched from the AMI is an instance store volume created from a template stored in Amazon S3.
+
+Region and Availability Zone Concepts
+-------------------
+Each region is completely independent.
+Each Availability Zone is isolated, but the Availability Zones in a region are connected through low-latency links.
+
+Region
+-------------------
+When you launch an instance, you must select an AMI that's in the same region.
+If the AMI is in another region, you can copy the AMI to the region you're using.
+
+Availability Zones
+-------------------
+You can also use Elastic IP addresses to mask the failure of an instance in one Availability Zone by rapidly remapping the address to an instance in another Availability Zone.
+An Availability Zone is represented by a region code followed by a letter identifier;
+for example: us-east-1a .
+independently map Availability Zones to identifiers for each account.
+For example, your Availability Zone us-east-1a might not be the same location as us-east-1a for another account.
+There's no way for you to coordinate Availability Zones between accounts.
+
+
+EC2 Root Device Volume
+-------------------
+1. contains the image used to boot the instance
+2. can be backed by Amazon EC2 instance store, which means the root device for an instance launched from the AMI is an instance store volume created from a template stored in Amazon S3
+3. can be backed by Amazon EBS. launch faster and use persistent storage.
