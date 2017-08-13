@@ -1,0 +1,32 @@
+HTML forms
+-------------------
+In HTML, a form is a collection of elements inside <form>...</form> that allow a visitor to do things like enter text, select options, manipulate objects or controls, and so on, and then send that information back to the server.
+
+Some of these form interface elements - text input or checkboxes - are fairly simple and are built into HTML itself. Others are much more complex; an interface that pops up a date picker or allows you to move a slider or manipulate controls will typically use JavaScript and CSS as well as HTML form <input> elements to achieve these effects.
+
+As well as its <input> elements, a form must specify two things:
+    1. where: the URL to which the data corresponding to the user’s input should be returned
+    2. how: the HTTP method the data should be returned by
+
+GET and POST
+-------------------
+GET and POST are the only HTTP methods to use when dealing with forms.
+
+GET, by contrast, bundles the submitted data into a string, and uses this to compose a URL. The URL contains the address where the data must be sent, as well as the data keys and values. You can see this in action if you do a search in the Django documentation, which will produce a URL of the form https://docs.djangoproject.com/search/?q=forms&release=1.
+
+Any request that could be used to change the state of the system - for example, a request that makes changes in the database - should use POST. GET should be used only for requests that do not affect the state of the system.
+
+GET would also be unsuitable for a password form,
+POST, coupled with other protections like Django’s CSRF protection offers more control over access.
+
+
+Django’s role in forms
+-------------------
+Django handles three distinct parts of the work involved in forms:
+    1. preparing and restructuring data to make it ready for rendering
+    2. creating HTML forms for the data
+    3. receiving and processing submitted forms and data from the client
+
+The Django Form class
+-------------------
+    a Form class describes a form and determines how it works and appears.

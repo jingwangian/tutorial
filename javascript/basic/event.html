@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>An object method is a function definition, stored as a property value.</p>
+<p>If you access it without (), it will return the function definition:</p>
+
+<p id="demo"></p>
+
+<script>
+
+//Support Arbitrary args by using arugments
+function openAlert(mess){
+    alert(mess);
+}
+
+function inputChanged(){
+    var dataEntered=document.getElementById('randInput').value;
+    alert('User Typed '+dataEntered);
+}
+
+</script>
+
+<a href="JavaScript:void(0)" onClick="alert('Hello');">Say Hello</a><br>
+<a href="JavaScript:void(0)" onClick="openAlert('Hi how are you');">Say How are you</a><br>
+<a href="JavaScript:void(0)"
+onmouseover="this.style.color='red';"
+onmouseout="this.style.color='blue'"
+ondblclick="this.text='YOu Double clicked me'"
+onmousedown="this.text='Don\'t Press to hard'"
+onmouseup="this.text='Thank you'" >Make me Red</a><br>
+</body>
+
+<input type="text" id="randInput" onchange="inputChanged()" name="">
+
+<form action="#" id="sampForm">
+    <p>charInput textbox</p>
+    <input type="text" name="" id='charInput'>
+
+    <p id="keyData">Key Data Here</p>
+    <input type="submit" value="Submit" name="">
+    <input type="reset" value="Reset" name="">
+
+</form><br>
+
+<img src="../img/ntt-logo.png" id="logo"><br>
+<button id="logoButton">Get Logo </button>
+<input type="text" size ="30", id='mouseInput' name=""><br>
+Mouse X: <input type="text" id="mouseX" name=""><br>
+Mouse Y: <input type="text" id="mouseY" name=""><br>
+
+<script type="text/javascript">
+    function getChar(event){
+        if(event.which == null){
+            return String.fromCharCode(event.keyCode);
+        }else if(event.which != 0 && event.charCode != 0){
+            return String.fromCharCode(event.which);
+        }else{
+            return null;
+        }
+    }
+
+
+    function keypress_func(event){
+        var char = getChar(event||window.event);
+        if(!char) return false;
+
+        document.getElementById('keyData').innerHTML = char+" was clicked";
+        return true;
+    }
+
+    document.getElementById('charInput').onkeypress=keypress_func;
+
+
+</script>
+</html>

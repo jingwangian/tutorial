@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Creating a JavaScript Object.</p>
+
+<p id="demo"></p>
+
+<p id="car"></p>
+
+<p id="new_person"></p>
+<script>
+var person = {firstName:"John", lastName:"Doe", sage:50, eyeColor:"blue"};
+
+var car = {
+    Name:'Accord',
+    "Brand":'Honda',
+    'seats':5,
+    fullName: function() {
+       return "Brand : " +car["Brand"] +"<br>Name : "+ car.Name + "<br>Seats : "+ car.seats;
+    }
+};
+
+document.getElementById("demo").innerHTML =
+person.firstName + " is " + person.age + " years old.";
+
+document.getElementById("car").innerHTML = car.fullName();
+
+var new_person = new person()
+
+document.getElementById("new_person").innerHTML =
+new_person.firstName + " is " + new_person.age + " years old.";
+
+
+</script>
+
+</body>
+</html>

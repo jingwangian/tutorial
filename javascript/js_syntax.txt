@@ -50,6 +50,7 @@ Re-Declaring Variables:
 
 string-concatenate:
     var x = 2 + 3 + "5"  ---> '55'
+    var x = "5"+2+3  ---> '523'
     x = 5 + 5;  ---> 10
     y = "5" + 5;  ---> 55
     z = "Hello" + 5; ---> Hello5

@@ -1,0 +1,53 @@
+The Django template language
+-----------------------------
+
+Using the template system in Python is a three-step process:
+    1. You configure an Engine.
+    2. You compile template code into a Template.
+    3. You render the template with a Context.
+
+
+Variables
+===================
+surrounded by {{ and }} like this:
+My first name is {{ first_name }}. My last name is {{ last_name }}.
+With a context of {'first_name': 'John', 'last_name': 'Doe'}, this template renders to:
+My first name is John. My last name is Doe.
+
+
+Dictionary lookup: {{ my_dict.key }}
+attribute lookup: {{my_object.attribute}}
+list-index lookup: {{my_list.0}}
+If a variable resolves to a callable, the template system will call it with no arguments and use its result instead of the callable.
+
+
+Tags
+===================
+Tags provide arbitrary logic in the rendering process.
+
+Tags are surrounded by {% and %} like this:
+    {% csrf_token %}
+
+can accept arguments:
+    {% cycle 'odd' 'even' %}
+
+beginning and ending:
+    {% if user.is_authenticated %}Hello, {{ user.username }}.{% endif %}
+
+See custom_tags.txt
+
+Filters
+===================
+Filters transform the values of variables and tag arguments.
+Example:
+    {{ django|title }}
+
+Some filters take an argument:
+    {{ my_date|date:"Y-m-d" }}
+
+See custom_filters.txt
+
+Comments
+===================
+Comments look like this:
+    {# this won't be rendered #}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>An object method is a function definition, stored as a property value.</p>
+<p>If you access it without (), it will return the function definition:</p>
+
+<p id="demo"></p>
+
+<script>
+
+function print_array(arr){
+    document.write(arr.valueOf(),"<br>");
+}
+
+var tomSmith = ["Tom Smith", "123 Main", 250.25];
+
+document.write(tomSmith.length,'<br>');
+
+//You can add more items
+tomSmith[3] = "tom_smith@gmail.com";
+
+
+for(i in tomSmith){
+    document.write("tomSmith["+i+"] = ",tomSmith[i] ,'<br>');
+}
+
+var numbers = [4,3,1,9,20,43];
+
+numbers.sort(function(x,y){return x>y});
+
+print_array(numbers);
+
+document.write(numbers.join("--"),"<br>");
+
+document.write(numbers.toString(),"<br>");
+
+var combinedArray = numbers.concat(tomSmith);
+document.write("combinedArray is ",combinedArray.toString(),"<br>");
+
+
+var num_list=[1,2,3,4,5];
+document.write("num_list : ",num_list.toString(),"<br>");
+
+num_list.pop()
+document.write("num_list after pop: ",num_list.toString(),"<br>");
+
+num_list.shift()
+document.write("num_list after shift: ",num_list.toString(),"<br>");
+
+num_list.unshift(10)
+document.write("num_list after unshift: ",num_list.toString(),"<br>");
+
+num_list.push(20)
+document.write("num_list after push: ",num_list.toString(),"<br>");
+
+</script>
+</body>
+</html>

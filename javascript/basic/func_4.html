@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>An object method is a function definition, stored as a property value.</p>
+<p>If you access it without (), it will return the function definition:</p>
+
+<p id="demo"></p>
+
+<script>
+
+//Support Arbitrary args by using arugments
+function getSum(){
+    var sum = 0;
+
+    for(i=0; i< arguments.length; i++){
+        sum += i;
+    }
+    return sum;
+}
+
+document.write("Sum = ",getSum(1,2,3,4,5),"<br>")
+</script>
+</body>
+</html>
