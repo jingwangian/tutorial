@@ -89,6 +89,16 @@ s3.discard(3)
 print(s3)
 
 
+a = set('abracadabra')
+b = set('alacazam')
+
+print('a - b', a - b)
+print('b - a', b - a)
+print('a & b', a & b)
+print('a | b', a | b)
+print('a ^ b', a ^ b)
+
+
 # def f(n):
 #     return ',' if n % 8 > 0 else None
 # # print(dir(d1))
