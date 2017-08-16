@@ -49,6 +49,7 @@ def handle_request(request):
     print('Method: {}'.format(request.method))
     print('Data: {}'.format(request.data))
 
+
 print(handle_request.__name__)
 handle_request(cl_request)
 
@@ -60,5 +61,8 @@ def handle_request_2(request):
     print('Method: {}'.format(request.method))
     print('Data: {}'.format(request.data))
 
+
 print(handle_request_2.__name__)
 handle_request_2(cl_request_2)
+
+cl_request_3 = Request('POST', 'Welcome to Python website')

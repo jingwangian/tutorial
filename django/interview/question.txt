@@ -1,0 +1,7 @@
+1. Matific is a global company, why do you select the Asutralia as a site to build a django developer team instead other countrys? Because some company would like
+
+2. It seems you have a website running on AWS, you have already some django developers why do you want to hire more? What are the main task for these new developer?
+
+3. How many online users a day for the matific website?
+
+4.It seems there a  account in github with some repositors in it for matific. but there isn't any update since 2 years ago? Is that project has been stopped?

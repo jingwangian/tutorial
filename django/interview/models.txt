@@ -1,0 +1,7 @@
+F() expressions
+
+F() therefore can offer performance advantages by:
+    getting the database, rather than Python, to do work
+    reducing the number of queries some operations require
+
+F() assignments persist after Model.save()
