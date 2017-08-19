@@ -31,8 +31,14 @@ SIGTTOU   22,22,27    Stop    Terminal output for background process
 import signal
 import time
 import os
+import sys
+import settings
 
 count = 10
+
+[sys.path.append(x) for x in settings.LIB_PATH]
+
+from timeout import TimeOut
 
 
 class MyException(Exception):
@@ -45,32 +51,32 @@ class MyException(Exception):
         #     return 'my_exception'
 
 
-class TimeOut():
-    class Timeout_Exception(Exception):
-        def __init__(self, err="Timeout_Exception"):
-            self.err = err
+# class TimeOut():
+#     class Timeout_Exception(Exception):
+#         def __init__(self, err="Timeout_Exception"):
+#             self.err = err
 
-        def __str__(self):
-            return self.err
+#         def __str__(self):
+#             return self.err
 
-    def __init__(self, sec):
-        self.sec = sec
+#     def __init__(self, sec):
+#         self.sec = sec
 
-    def __enter__(self):
-        print('Start to time')
-        signal.signal(signal.SIGALRM, self.raise_timeout)
-        signal.alarm(self.sec)
+#     def __enter__(self):
+#         print('Start to time')
+#         signal.signal(signal.SIGALRM, self.raise_timeout)
+#         signal.alarm(self.sec)
 
-    def __exit__(self, *args):
-        # signal.alarm(0)
-        print('Exist Timeout')
-        # [print(type(x)) for x in args]
+#     def __exit__(self, *args):
+#         # signal.alarm(0)
+#         print('Exist Timeout')
+#         # [print(type(x)) for x in args]
 
-    def raise_timeout(self, *args):
-        signal.alarm(0)  # Close the time out here
-        print('Time out')
-        [print(type(x)) for x in args]
-        raise self.Timeout_Exception()
+#     def raise_timeout(self, *args):
+#         signal.alarm(0)  # Close the time out here
+#         print('Time out')
+#         [print(type(x)) for x in args]
+#         raise self.Timeout_Exception()
 
 
 def sig_handle(signum, frame):
@@ -102,15 +108,16 @@ def main():
     signal.signal(signal.SIGTERM, sig_handle)
     signal.signal(signal.SIGQUIT, sig_handle)
     signal.signal(signal.SIGALRM, sig_handle)
-    signal.alarm(5)
+    # signal.alarm(5)
     try:
-        # with TimeOut(5):
-        while(1):
-            time.sleep(1)
-            print('count is {} now'.format(count))
-            count -= 1
-            if count <= 0:
-                break
+        print("Start to invoke timeout")
+        with TimeOut(5):
+            while(1):
+                time.sleep(1)
+                print('count is {} now'.format(count))
+                count -= 1
+                if count <= 0:
+                    break
 
     except TimeOut.Timeout_Exception as e:
         print("go to main Timeout_Exception")

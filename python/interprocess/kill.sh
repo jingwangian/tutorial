@@ -1,2 +1,2 @@
-echo "kill 11952"
-kill 11952
+echo "kill 17952"
+kill 17952
