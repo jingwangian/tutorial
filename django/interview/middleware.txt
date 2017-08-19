@@ -1,0 +1,57 @@
+Middleware
+
+1. What is Middleware
+Middleware is a framework of hooks into Django’s request/response processing. It’s a light, low-level “plugin” system for globally altering Django’s input or output.
+
+Middleware is defined in the MIDDLEWARE_CLASSES in the main setting.py file.
+MIDDLEWARE_CLASSES is a list contains the middlewares to be used.
+The middleware will be executed as the defined orders.
+There are several important hook functions which are process_request(), process_view() ,process_exception(), process_template_response(), process_response().
+
+
+process_request(request)
+-------------------
+    is called on each request, before Django decides which view to execute.
+    input :  HttpRequest object.
+    return: None or HttpResponse object.
+        If it returns None, Django will continue processing this request, executing any other process_request() middleware, then, process_view() middleware, and finally, the appropriate view.
+        If it returns an HttpResponse object, Django won’t bother calling any other request, view or exception middleware, or the appropriate view; it’ll apply response middleware to that HttpResponse, and return the result.
+
+
+process_view(request, view_func, view_args, view_kwargs)
+----------------
+    process_view() is called just before Django calls the view.
+    It should return either None or an HttpResponse object.
+
+process_template_response
+-------------------------
+process_template_response(request, response)
+    request is an HttpRequest object.
+    response is the TemplateResponse object (or equivalent) returned by a Django view or by a middleware.
+    It is called just after the view has finished executing, if the response instance has a render() method, indicating that it is a TemplateResponse or equivalent.
+
+
+
+process_response(request, response)
+------------------------
+    request is an HttpRequest object.
+    response is the HttpResponse or StreamingHttpResponse object returned by a Django view or by a middleware.
+    process_response() is called on all responses before they’re returned to the browser.
+
+    the process_response() method is always called
+
+    NOTICE: Finally, remember that during the response phase, middleware are applied in reverse order, from the bottom up. This means classes defined at the end of MIDDLEWARE_CLASSES will be run first.
+
+
+process_exception(request, exception)
+-------------------------
+    request is an HttpRequest object. exception is an Exception object raised by the view function.
+    Django calls process_exception() when a view raises an exception.
+    process_exception() should return either None or an HttpResponse object.
+    If it returns an HttpResponse object, the template response and response middleware will be applied, and the resulting response returned to the browser. Otherwise, default exception handling kicks in.
+
+
+How to define a Middleware?
+
+
+

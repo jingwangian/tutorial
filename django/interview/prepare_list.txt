@@ -1,0 +1,21 @@
+1. Building a REST API with Django
+
+pip install rest_framework
+Using Serializers
+
+2. user authentication
+
+
+3. DNS
+4. Models Field methods
+5. Static file
+
+    STATIC_ROOT
+    manage.py collectstatic
+
+    STATIC_URL
+6. Forms validation
+7. manage.py command
+8. django-admin command
+
+9. CSRF

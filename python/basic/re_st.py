@@ -101,10 +101,23 @@ m = p.match('abbcbd')
 print(m.group(0))
 
 
+print('?')
 m = re.search(r'\w*(?=is 15)', exampleString)
 print(m.group(0))
 
 
-m = regex.search(r'(aa)', 'x1aaababacabbaacaaada')
+m = re.search(r'(aa)', 'x1aaababacabbaacaaada')
 print(m.pos, m.string, m.start(), m.span())
+print(m.groups())
+
+# unamed group
+m = re.search(r'^/articles/([0-9]{4})/([0-9]{2})/([0-9]+)/$', '/articles/2003/03/03/')
+print(m.pos, m.string, m.start(), m.span())
+print(m.groups())
+
+# named group
+print('\nnamed group:')
+m = re.search(r'^/articles/(?P<year>\d+)/$', '/articles/2003/')
+print(m.pos, m.string, m.start(), m.span())
+print(m.group('year'))
 print(m.groups())
