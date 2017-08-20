@@ -9,19 +9,8 @@ import time
 import os
 import queue
 import signal
-from enum import Enum
+from command import ProcessCommand
 
-
-class ProcessCommand():
-    class CommandType(Enum):
-        NONE = 0
-        STOP = 1
-        TASK = 2
-
-    def __init__(self, type=CommandType.STOP, func=None, *args):
-        self.type = type
-        self.func = func
-        self.args = args
 
 
 class Worker(Process):
@@ -61,11 +50,11 @@ class Worker(Process):
 
     def run(self):
         print('worker_{} start to run'.format(self.num))
-        
+
         signal.signal(signal.SIGINT, signal.SIG_IGN)
         signal.signal(signal.SIGTERM, signal.SIG_IGN)
         signal.signal(signal.SIGQUIT, signal.SIG_IGN)
-    
+
         while self.running:
             try:
                 item = self.get_cmd_queue()
@@ -80,6 +69,8 @@ class Worker(Process):
                     task_item = self.get_task()
                     if task_item is not None:
                         self.handler(self.num, task_item)
+                    else:
+                        time.sleep(1)
             except Exception as e:
                 print(e)
             finally:

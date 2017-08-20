@@ -43,17 +43,24 @@ tzname,utcfromtimestamp,utcnow,utcoffset,utctimetuple,weekday,year,
 import datetime
 
 
-def printkey(obj):
-    def f(n):
-        return ',' if n % 8 > 0 else None
-    [print(x, end=f(i + 1)) for i, x in (enumerate(dir(obj)))]
-printkey(datetime.datetime)
+# def printkey(obj):
+#     def f(n):
+#         return ',' if n % 8 > 0 else None
+#     [print(x, end=f(i + 1)) for i, x in (enumerate(dir(obj)))]
+# printkey(datetime.datetime)
 
-t1 = datetime.time()
+start_time = datetime.time(hour=0,minute=30)
+stop_time = datetime.time(hour=23,minute=00)
+print('start time {}'.format(start_time))
+print('stop time {}'.format(stop_time))
 
+t1 = datetime.datetime.now()
 
-def printkey(obj):
-    def f(n):
-        return ',' if n % 8 > 0 else None
-    [print(x, end=f(i + 1)) for i, x in (enumerate(dir(obj)))]
-printkey(t1)
+print('time is {}'.format(t1))
+print('{} : {}'.format(t1.hour,t1.minute))
+
+# def printkey(obj):
+#     def f(n):
+#         return ',' if n % 8 > 0 else None
+#     [print(x, end=f(i + 1)) for i, x in (enumerate(dir(obj)))]
+# printkey(t1)

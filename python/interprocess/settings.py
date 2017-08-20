@@ -1,1 +1,1 @@
-LIB_PATH = ['/db2/github/tutorial/python/lib']
+LIB_PATH = ['/db/github/tutorial/python/lib']
