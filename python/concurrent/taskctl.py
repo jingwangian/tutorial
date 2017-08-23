@@ -37,6 +37,18 @@ class TaskCtlWorker(Worker):
 
         print('worker_{} exit from run'.format(self.name))
 
+
+def get_route_task():
+    """
+    Get a route task from the task_center.
+    This function will send a request to the task_center and
+    get a RESTFul API as following:
+    {"route_id":1}
+    """
+
+def create_tasks_by_routeid():
+    pass
+
 def main():
     pass
 

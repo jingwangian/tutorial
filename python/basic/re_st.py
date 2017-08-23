@@ -38,6 +38,8 @@ search(): scan through the string and match any position
 findall(): Find all substrings matched by RE,return a list
 finditer(): same as findall but return a iterator.
 
+
+
 DONT FORGET!:
 . + * ? [] $ ^ () {} | \
 
@@ -111,13 +113,39 @@ print(m.pos, m.string, m.start(), m.span())
 print(m.groups())
 
 # unamed group
+print('''\n---re.search(r'^/articles/([0-9]{4})/([0-9]{2})/([0-9]+)/$', '/articles/2003/03/03/') --- ''')
 m = re.search(r'^/articles/([0-9]{4})/([0-9]{2})/([0-9]+)/$', '/articles/2003/03/03/')
 print(m.pos, m.string, m.start(), m.span())
-print(m.groups())
+print("m.groups()-->",m.groups())
+print("m.groupdict()-->",m.groupdict())
 
 # named group
-print('\nnamed group:')
-m = re.search(r'^/articles/(?P<year>\d+)/$', '/articles/2003/')
+print("""\n---re.search(r'^/articles/(?P<year>\d+)/(?P<month>\d+)/$', '/articles/2003/10/')--- """)
+m = re.search(r'^/articles/(?P<year>\d+)/(?P<month>\d+)/$', '/articles/2003/10/')
 print(m.pos, m.string, m.start(), m.span())
 print(m.group('year'))
-print(m.groups())
+print("m.groups()-->",m.groups())
+print("m.groupdict()-->",m.groupdict())
+print(m.groupdict().items())
+[print((k,m.group(k))) for k in m.groupdict()]
+
+# groups
+print('''\n---re.match(r"(\w+) (\w+)", "Isaac Newton, physicist")---''')
+m = re.match(r"(\w+) (\w+)", "Isaac Newton, physicist")
+print('''len(m.groups())-->''',len(m.groups()))
+print('''m.groups()-->''',m.groups())
+[print('''m.group({})-->{}'''.format(x,m.group(x))) for x in range(0,len(m.groups())+1)]
+
+
+print('''\n---re.match(r"(\w+) ", "Isaac Newton physicist abc")---''')
+m = re.match(r"(\w+) ", "Isaac Newton, physicist abc")
+print('''len(m.groups())-->''',len(m.groups()))
+print('''m.groups()-->''',m.groups())
+[print('''m.group({})-->{}'''.format(x,m.group(x))) for x in range(0,len(m.groups())+1)]
+
+
+print('''\n---re.match("\w+", "Isaac Newton, physicist abc")---''')
+m = re.match("\w+", "Isaac Newton, physicist abc")
+print('''len(m.groups())-->''',len(m.groups()))
+print('''m.groups()-->''',m.groups())
+[print('''m.group({})-->{}'''.format(x,m.group(x))) for x in range(0,len(m.groups())+1)]
