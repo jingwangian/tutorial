@@ -35,6 +35,9 @@ d = dict([('two', 2), ('one', 1), ('three', 3)])
 e = dict({'three': 3, 'one': 1, 'two': 2})
 print(a == b == c == d == e)
 
+print('a -->', a)
+print('d -->', d)
+print('a==d:', a == d)
 # Using items
 print(a.items())
 print(tuple(a.items()))

@@ -28,17 +28,22 @@ dynamic_cast    namespace   template     '''
 # ret = subprocess.run(lscmd.split(' '), stdout=subprocess.PIPE)
 # [print(x) for x in map(lambda x: x.strip().split(' ')[1].split('/')[0], ret.stdout.decode().splitlines())]
 
-import os
-import django
-from django.template import Context, Template
+# import os
+# import django
+# from django.template import Context, Template
 
 
-def test_template():
-    t = Template("My name is {{ person.first_name }}.")
-    d = {"person": {"first_name": "Joe", "last_name": "Johnson"}}
-    print(t.render(Context(d)))
+# def test_template():
+#     t = Template("My name is {{ person.first_name }}.")
+#     d = {"person": {"first_name": "Joe", "last_name": "Johnson"}}
+#     print(t.render(Context(d)))
 
 
-if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
-    test_template()
+# if __name__ == "__main__":
+#     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
+#     test_template()
+
+list1=[]
+
+if not list1:
+    print('list1 is empty')
