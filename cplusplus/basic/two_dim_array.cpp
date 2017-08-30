@@ -9,6 +9,8 @@ int a[3][4] = {
    {8, 9, 10, 11}   //  initializers for row indexed by 2
 };
 
+multidimensional array must have bounds for all dimensions except the first
+
 int a[0][4] = {
    {0, 1, 2, 3} ,   //  initializers for row indexed by 0
    {4, 5, 6, 7} ,   //  initializers for row indexed by 1
