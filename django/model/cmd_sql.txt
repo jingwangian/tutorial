@@ -1,0 +1,27 @@
+COMMAND: entry=Entry.objects.get(pk=1)
+
+SQL: SELECT "blogman_entry"."id", "blogman_entry"."blog_id", "blogman_entry"."headline", "blogman_entry"."body_text", "blogman_entry"."pub_date", "blogman_entry"."mod_date", "blogman_entry"."n_comments", "blogman_entry"."n_pingbacks", "blogman_entry"."rating" FROM "blogman_entry" WHERE "blogman_entry"."id" = 1
+
+entrys.authors
+SELECT "blogman_blog"."id", "blogman_blog"."name", "blogman_blog"."tagline" FROM "blogman_blog" WHERE "blogman_blog"."id" = 1
+
+
+au_list=entrys.authors.all()
+
+SELECT "blogman_author"."id", "blogman_author"."name", "blogman_author"."email" FROM "blogman_author" INNER JOIN "blogman_entry_authors" ON ("blogman_author"."id" = "blogman_entry_authors"."author_id") WHERE "blogman_entry_authors"."entry_id" = 1 LIMIT 21
+
+COMMAND: Entry.objects.all()
+SQL: SELECT "blogman_entry"."id", "blogman_entry"."blog_id", "blogman_entry"."headline", "blogman_entry"."body_text", "blogman_entry"."pub_date", "blogman_entry"."mod_date", "blogman_entry"."n_comments", "blogman_entry"."n_pingbacks", "blogman_entry"."rating" FROM "blogman_entry" LIMIT 21
+
+
+COMMAND: entry_list=Entry.objects.filter(authors__name='wangjing')
+SQL: SELECT "blogman_entry"."id", "blogman_entry"."blog_id", "blogman_entry"."headline", "blogman_entry"."body_text", "blogman_entry"."pub_date", "blogman_entry"."mod_date", "blogman_entry"."n_comments", "blogman_entry"."n_pingbacks", "blogman_entry"."rating" FROM "blogman_entry" INNER JOIN "blogman_entry_authors" ON ("blogman_entry"."id" = "blogman_entry_authors"."entry_id") INNER JOIN "blogman_author" ON ("blogman_entry_authors"."author_id" = "blogman_author"."id") WHERE "blogman_author"."name" = 'wangjing' LIMIT 21
+
+
+COMMAND:entry=Entry.objects.get(pk=2)
+SQL: SELECT "blogman_entry"."id", "blogman_entry"."blog_id", "blogman_entry"."headline", "blogman_entry"."body_text", "blogman_entry"."pub_date", "blogman_entry"."mod_date", "blogman_entry"."n_comments", "blogman_entry"."n_pingbacks", "blogman_entry"."rating" FROM "blogman_entry" WHERE "blogman_entry"."id" = 2
+
+entry.blog
+SQL: SELECT "blogman_blog"."id", "blogman_blog"."name", "blogman_blog"."tagline" FROM "blogman_blog" WHERE "blogman_blog"."id" = 2
+
+
