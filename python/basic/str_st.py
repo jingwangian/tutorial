@@ -136,9 +136,9 @@ print('abcdabcd'.rfind('cd'))
 
 # just and rjust
 print('abcd'.rjust(10, '-'))
-#--->------abcd
+#--->   ------abcd
 print('abcd'.ljust(10, '*'))
-#--->abcd******
+#--->   abcd******
 
 # split
 print('abcdabcdefcdxxcd'.split('cd'))
