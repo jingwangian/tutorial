@@ -1,3 +1,59 @@
+Tables: Blog, Entry, Author
+
+class Blog(models.Model):
+    name = models.CharField(max_length=100)
+    tagline = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+class Author(models.Model):
+    name = models.CharField(max_length = 200)
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.name
+
+class Entry(models.Model):
+    blog = models.ForeignKey(Blog)
+    headline = models.CharField(max_length = 255)
+    body_text = models.TextField()
+    pub_date = models.DateField()
+    mod_date = models.DateField()
+    authors = models.ManyToManyField(Author)
+    n_comments = models.IntegerField()
+    n_pingbacks = models.IntegerField()
+    rating =models.IntegerField()
+
+    def __str__(self):
+        return self.headline
+
+
+
+1. What is different objects.get vs objects.filter ?
+
+blog=Blog.objects.get(id=1)
+---------------------------
+SQL: SELECT "blogman_blog"."id", "blogman_blog"."name", "blogman_blog"."tagline" FROM "blogman_blog" WHERE "blogman_blog"."id" = 1
+Remark: The SQL will be executed immediately
+
+
+blog=Blog.objects.filter(id=1)
+------------------------------
+SQL: SELECT "blogman_blog"."id", "blogman_blog"."name", "blogman_blog"."tagline" FROM "blogman_blog" WHERE "blogman_blog"."id" = 1 LIMIT 21
+Remark: The SQL will be executed when print(blog)
+
+
+
+2. Get the record from the Entry table by blog
+blog=Blog.objects.get(id=3)
+SQL : SELECT "blogman_blog"."id", "blogman_blog"."name", "blogman_blog"."tagline" FROM "blogman_blog" WHERE "blogman_blog"."id" = 3
+
+en=blog.entry_set.all()
+SQL : SELECT "blogman_entry"."id", "blogman_entry"."blog_id", "blogman_entry"."headline", "blogman_entry"."body_text", "blogman_entry"."pub_date", "blogman_entry"."mod_date", "blogman_entry"."n_comments", "blogman_entry"."n_pingbacks", "blogman_entry"."rating" FROM "blogman_entry" WHERE "blogman_entry"."blog_id" = 3 LIMIT 21
+
+
+
 COMMAND: entry=Entry.objects.get(pk=1)
 
 SQL: SELECT "blogman_entry"."id", "blogman_entry"."blog_id", "blogman_entry"."headline", "blogman_entry"."body_text", "blogman_entry"."pub_date", "blogman_entry"."mod_date", "blogman_entry"."n_comments", "blogman_entry"."n_pingbacks", "blogman_entry"."rating" FROM "blogman_entry" WHERE "blogman_entry"."id" = 1
