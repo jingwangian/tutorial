@@ -1,0 +1,107 @@
+----> Open a webpage,send GET request
+GET /polls/1/ HTTP/1.1
+Host: 127.0.0.1:8000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://127.0.0.1:8000/polls/
+Cookie: __utma=96992031.1955441824.1479947360.1479947360.1479974329.2; csrftoken=AB4U1DLRaC6YLpwB5nAJ2Xs0NoiPVvqlwji8KeOH031YPD5XhFEH41PUp3SVHIo0; sessionid=guvu7mvi58bey4mo64lktyiznggfz6dd
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+
+<---- Get a 200 reponsed with cookie in it and with form. Be noticed there is a csrfmiddlewaretoken in the form
+HTTP/1.0 200 OK
+Date: Wed, 06 Sep 2017 23:57:18 GMT
+Server: WSGIServer/0.2 CPython/3.5.2
+Vary: Cookie
+X-Frame-Options: SAMEORIGIN
+Content-Type: text/html; charset=utf-8
+Content-Length: 707
+Set-Cookie: csrftoken=AB4U1DLRaC6YLpwB5nAJ2Xs0NoiPVvqlwji8KeOH031YPD5XhFEH41PUp3SVHIo0; expires=Wed, 05-Sep-2018 23:57:18 GMT; Max-Age=31449600; Path=/
+
+<h1>What Honda&#39;s car you like</h1>
+<form action="/polls/1/vote/" method="post">
+<input type='hidden' name='csrfmiddlewaretoken' value='4TtlAzBkSsYG6UbrdfOarrCblwH2N3ch0BHzjaEaITTGa8KNpxS8tvZ5Xbh8zgaW' />
+
+    <input type="radio" name="choice" id="choice1", value="4" />
+    <label for="choice1">Jazz</label><br/>
+
+    <input type="radio" name="choice" id="choice2", value="3" />
+    <label for="choice2">City</label><br/>
+
+    <input type="radio" name="choice" id="choice3", value="2" />
+    <label for="choice3">Civil</label><br/>
+
+    <input type="radio" name="choice" id="choice4", value="1" />
+    <label for="choice4">Accord</label><br/>
+
+<input type="submit" name="Vote" value="vote" />
+</form>
+
+
+----> Select the item, submit. Send the POST request with values including the hidden csrfmiddlewaretoken value
+POST /polls/1/vote/ HTTP/1.1
+Host: 127.0.0.1:8000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://127.0.0.1:8000/polls/1/
+Cookie: __utma=96992031.1955441824.1479947360.1479947360.1479974329.2; csrftoken=AB4U1DLRaC6YLpwB5nAJ2Xs0NoiPVvqlwji8KeOH031YPD5XhFEH41PUp3SVHIo0; sessionid=guvu7mvi58bey4mo64lktyiznggfz6dd
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+
+csrfmiddlewaretoken=4TtlAzBkSsYG6UbrdfOarrCblwH2N3ch0BHzjaEaITTGa8KNpxS8tvZ5Xbh8zgaW
+choice=2
+Vote=vote
+
+
+<---- Get a 302 redirection response
+HTTP/1.0 302 Found
+Date: Wed, 06 Sep 2017 23:58:25 GMT
+Server: WSGIServer/0.2 CPython/3.5.2
+X-Frame-Options: SAMEORIGIN
+Content-Type: text/html; charset=utf-8
+Location: /polls/1/results/
+Content-Length: 0
+
+
+
+----> Send the request to the new url
+GET /polls/1/results/ HTTP/1.1
+Host: 127.0.0.1:8000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://127.0.0.1:8000/polls/1/
+Cookie: __utma=96992031.1955441824.1479947360.1479947360.1479974329.2; csrftoken=AB4U1DLRaC6YLpwB5nAJ2Xs0NoiPVvqlwji8KeOH031YPD5XhFEH41PUp3SVHIo0; sessionid=guvu7mvi58bey4mo64lktyiznggfz6dd
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+
+
+<---- Get the 200 reponse contains the votes results
+HTTP/1.0 200 OK
+Date: Wed, 06 Sep 2017 23:58:25 GMT
+Server: WSGIServer/0.2 CPython/3.5.2
+X-Frame-Options: SAMEORIGIN
+Content-Type: text/html; charset=utf-8
+Content-Length: 209
+
+<h1>What Honda&#39;s car you like</h1>
+
+<ul>
+
+    <li>Jazz -- 1 vote</li>
+
+    <li>City -- 1 vote</li>
+
+    <li>Civil -- 1 vote</li>
+
+    <li>Accord -- 2 votes</li>
+
+</ul>
+
+<a href="/polls/1/">Vote again?</a>
+
