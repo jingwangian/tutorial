@@ -68,3 +68,14 @@ print(f)
 f1 = dict([((1, 4), 'a'), ('b', (2, 5))])
 print(f1)
 print(sorted([((1, 4), 'a'), ((2, 5), 'b')]))
+
+d2 = dict()
+
+[d2.setdefault('student', []).append(x) for x in ('wangj', 'libing', 'wanglin')]
+[d2.setdefault('teachers', []).append(x) for x in ('zhangxiao', 'xumei', 'linguodong')]
+
+d3 = {'student': 100}
+[print(k, v) for k, v in d2.items()]
+
+d2.update(d3)
+[print(k, v) for k, v in d2.items()]
