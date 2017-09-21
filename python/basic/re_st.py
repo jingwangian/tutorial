@@ -79,6 +79,7 @@ print(m.group())
 
 
 # Using *? so no greedy
+print("# Using *? so no greedy")
 m = re.search(r'a.*?b', 'a1ba1234b')
 print(m.group())
 

@@ -106,4 +106,6 @@ print([(k, s1.count(k)) for k in sorted(keys)])
 # [print(x, end=f(i + 1)) for i, x in (enumerate(dir(l1)))]
 
 
-print(slice(1, 20))
+a = [1, 2, 3, 4, 5]
+sliceObj = slice(1, 3)
+a[sliceObj]

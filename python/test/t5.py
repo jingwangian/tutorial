@@ -3,22 +3,6 @@
 
 import csv
 
-# [print(x) for x in s1_list]
-
-# print(' '.join(map(lambda x: '0x{}'.format(x), s1.split())))
-
-file_name = '/media/sf_hostshare/1/a.csv'
-new_file_name = '/media/sf_hostshare/1/a_new.csv'
-
-str_tmp = r'''SET PATH = C: \fep\fsepv95client64\lib
-C: \fep\fsepv95client64\bin
-C: \fep\fsepv95client64\include
-%PATH%
-SET PGHOST = 10.44.37.33
-SET PGUSER = wangj
-SET PGCLIENTENCODING = UTF8
-test File: uvarchar.pgc
-test function: test_{}_{}'''
 
 # with open(file_name) as f:
 #     csv_data = csv.reader(f)
@@ -61,7 +45,10 @@ print(d1)
 a = set('abracadabra')
 b = set('alacazam')
 
+print("a-b")
 print(a - b)
+
+print("b-a")
 print(b - a)
 
 
@@ -71,4 +58,9 @@ print(sorted(set(basket)))
 print(list(reversed(sorted(set(basket)))))
 
 print(dir(slice(1, 10)))
-print(slice(1, 10))
+l1 = slice(1, 10)
+print(l1)
+
+a = [1, 2, 3, 4, 5]
+sliceObj = slice(1, 3)
+a[sliceObj]

@@ -22,6 +22,24 @@ def print_db(version, db):
     print(print_db.__name__)
     print('db:{} -- version:{}'.format(db, version))
 
+
+def print_db2(**kwargs):
+    print(print_db2.__name__)
+
+    print(len(kwargs))
+
+    if 'db' in kwargs:
+        print('db in kwargs')
+    try:
+        db = kwargs['db']
+        version = kwargs['version']
+        pub_date = kwargs['pub_date']
+    except KeyError as e:
+        print(e)
+
+    print('db:{} -- version:{}'.format(db, version))
+
+
 list1 = ['apple', 'banana']
 dict1 = {'db': 'postgresql', 'version': 9.6}
 
@@ -87,6 +105,8 @@ fun1('hello', [1, 2, 3], *list1, dict1, **dict1)
 
 print_db(**dict1)
 # ---> db:postgresql -- version:9.6
+
+print_db2(**dict1)
 
 # fun2(list1)
 # args-->['apple', 'banana']
