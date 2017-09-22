@@ -2,7 +2,7 @@
 
 
 import csv
-
+import datetime
 # [print(x) for x in s1_list]
 
 # print(' '.join(map(lambda x: '0x{}'.format(x), s1.split())))
@@ -72,3 +72,25 @@ print(list(reversed(sorted(set(basket)))))
 
 print(dir(slice(1, 10)))
 print(slice(1, 10))
+
+import os
+p1 = os.getcwd()
+print(p1)
+print(os.path.abspath(p1))
+
+file1 = '../v3/results/flight_1_5._xt'
+
+file2 = '../v3/results/flight_1_5'
+file3 = '../v3/results/flight_1_5/'
+
+print(os.path.split(file1))
+print(os.path.split(file2))
+print(os.path.split(file3))
+
+print(os.path.splitext(file1))
+print(os.path.splitext(file2))
+print(os.path.splitext(file3))
+
+finalname = '{}.txt'.format(os.path.splitext(file1)[0])
+print(finalname)
+print(finalname[-4:])
