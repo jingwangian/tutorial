@@ -38,6 +38,7 @@ c2 = C()
 # Here value1 and value2 are class value
 print(c1.value1, c1.value2)
 print(c2.value1, c2.value2)
+print('C.value1, C.value2:', C.value1, C.value2)
 print(c1)
 print(c2)
 print(c1.__dict__)
@@ -50,3 +51,12 @@ print(c1.__dict__)
 print(c2.value1, c2.value2)
 print(c1)
 print(c2)
+
+del c1.value1
+del c1.value2
+print('c1.value1, c1.value2 -- ', c1.value1, c1.value2)
+
+del C.value1
+print('c1.__dict__:', c1.__dict__)
+
+# print('C.__dict__:', C.__dict__)
