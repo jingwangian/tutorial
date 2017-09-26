@@ -2,25 +2,24 @@
 
 
 import sys
+from itertools import dropwhile
 
+s = 'beabee-feab'
 
-def solve(a0, a1, a2, b0, b1, b2):
-    # Complete this function
-    A = (a0, a1, a2)
-    B = (b0, b1, b2)
+s = 'www.abc.xy'
+k = 87
 
-    point_a = 0
-    point_b = 0
-    for x, y in zip(A, B):
-        if x > y:
-            point_a += 1
-        elif x < y:
-            point_b += 1
-    return point_a, point_b
+s = 'DNFjxo?b5h*5<LWbgs6?V5{3M].1hG)pv1VWq4(!][DZ3G)riSJ.CmUj9]7Gzl?VyeJ2dIPEW4GYW*scT8(vhu9wCr]q!7eyaoy.'
+k = 45
+es = 'WGYcqh?u5a*5<EPuzl6?O5{3F].1aZ)io1OPj4(!][WS3Z)kbLC.VfNc9]7Zse?OrxC2wBIXP4ZRP*lvM8(oan9pVk]j!7xrthr.'
 
+S = 'OOSDSSOSOSWEWSOSOSOSOSOSOSSSSOSOSOSS'
 
-x1 = 10**20
-
-
-print(list(range(5)))
-print(list(range(-1, -(5 + 1), -1)))
+num = 0
+print(len(S))
+print(int(len(S) / 3))
+for i in range(int(len(S) / 3)):
+    msg = S[i * 3:i * 3 + 3]
+    if msg != 'SOS':
+        num += 1
+print(num)
