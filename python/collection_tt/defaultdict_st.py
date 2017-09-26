@@ -34,7 +34,7 @@ d = defaultdict(set)
 print(d.items())
 
 
-s = [('red', 1), ('blue', 2), ('red', 3), ('blue', 4), ('red', 1), ('blue', 4), ('yellow', 2, 3, 5)]
+s = [('red', 1), ('blue', 2), ('yellow', 12), ('red', 3), ('blue', 4), ('red', 1), ('blue', 4), ('yellow', 2, 3, 5)]
 d = defaultdict(list)
 for x in s:
     k = x[0]
