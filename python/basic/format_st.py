@@ -19,6 +19,7 @@ once_upon_a_time = datetime(2010, 7, 1, 12, 0, 0)
 delta = timedelta(days=0, hours=1, minutes=0)
 
 # creat a list
+print('*' * 20, 'gen')
 gen = [once_upon_a_time + x * delta for x in range(20)]
 print(type(gen))
 print(gen)

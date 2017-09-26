@@ -15,6 +15,9 @@ from itertools import accumulate
 
 print(list(accumulate([1, 2, 3, 4, 5])))  # - - > 1 3 6 10 15
 
+[print(x, end=' ') for x in accumulate([1, 2, 3, 4, 5])]
+print(' ')
+
 print(list(accumulate([1, 2, 3, 4, 5], lambda x, y: x + y + 100)))  # - - > 1 3 6 10 15
 '''
 1   1
@@ -31,6 +34,7 @@ print(list(accumulate([100, 50, 30, 20, 10], lambda x, y: x - y)))  # - - > 1 3 
 #     print('')
 
 # printkey(obj)
+print('it.chain:')
 print(list(it.chain(['a', 'b', 'c'], [1, 2, 3], ['c', 'd', 'e', 'f'])))
 
 

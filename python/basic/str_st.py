@@ -93,7 +93,7 @@ print(s1.capitalize())
 print(s2.casefold())
 
 # center
-print(s1.center(len(s1) + 3, 'y'))
+print(s1.center(len(s1) + 3, 'y'))`
 print('count of ll in s1:', s1.count('ll'))
 
 print('中'.encode(encoding="utf-16", errors="strict"))
@@ -169,6 +169,7 @@ print('s2.lower():', s2.lower())
 #isalnum, isalpha, isdigit
 def isis(s5):
     print('"{}":\t\t{}\t{}\t{}\t{}'.format(s5, s5.isalnum(), s5.isdigit(), s5.isalpha(), s5.isnumeric()))
+
 
 print('str   \t\tisalnum\tisdigit\tisalpha\tisnumeric')
 s5 = '111'

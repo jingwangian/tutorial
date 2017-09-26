@@ -9,12 +9,18 @@ from functools import reduce
 
 l1 = [1, 2, 3, 4, 5, 6, 7]
 
-[print(t) for t in map(lambda x: x * 2, l1)]
+[print(t, end=' ') for t in map(lambda x: x * 2, l1)]
 
-[print(t) for t in filter(lambda x: x >= 5, l1)]
+print('')
 
+[print(t, end=' ') for t in filter(lambda x: x >= 5, l1)]
+print('')
 
+<<<<<<< HEAD
 print('reduce')
+=======
+print('reduce result for list:', l1)
+>>>>>>> ccba8f3086287825e562227c5e27efb92fe677da
 print(reduce(lambda x, y: x + y, l1))
 print(reduce(lambda x, y: '{}_{}'.format(x, y), l1))
 print(help(reduce))
@@ -22,4 +28,16 @@ print(help(reduce))
 b = bytearray([1, 2, 3, 4])
 print(b)
 [print(oct(x)) for x in b]
+<<<<<<< HEAD
 [print(x) for x in b]
+=======
+
+y = l1[0]
+
+
+total = 0
+for x in l1:
+    total = x + total
+    print(total, end=' ')
+    print(total)
+>>>>>>> ccba8f3086287825e562227c5e27efb92fe677da

@@ -29,12 +29,13 @@ l1 = [1, 2, 3, 4, 5, 6]
 l2 = ['a', 'b', 'c', 'd', 'c', 'd', 'c', 'b', 'd', 'd']
 
 # Using count
-print(l1.count('d'))
-print(l2.count('d'))
+print(l1.count('d'))  # --->0
+print(l2.count('d'))  # --->4
 
 
 # slice
 print('l1[::2]:', l1[::2])
+#-->l1[::2]: [1, 3, 5]
 
 # del
 l3 = l1.copy()
@@ -52,12 +53,12 @@ print('l3.pop([1, 2, 3]):', l3)
 # Using copy
 l3 = l1.copy()
 l1.append(7)
-print(l1)
-print(l3)
+print('l1.append(7) --> ', l1)
+print('l3 -->', l3)
 
 # Using extend
 l1.extend(l2)
-print(l1)
+print('l1.extend(l2)--->', l1)
 
 # Using index, return ValueError if value is not in list
 try:
@@ -105,4 +106,6 @@ print([(k, s1.count(k)) for k in sorted(keys)])
 # [print(x, end=f(i + 1)) for i, x in (enumerate(dir(l1)))]
 
 
-print(slice(1, 20))
+a = [1, 2, 3, 4, 5]
+sliceObj = slice(1, 3)
+a[sliceObj]

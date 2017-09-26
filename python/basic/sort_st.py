@@ -22,6 +22,7 @@ class Student:
 
 print(sorted(student_tuples, key=lambda student: student[2]))
 
+print('using itemgetter')
 print(sorted(student_tuples, key=itemgetter(1, 2)))
 
 student_objects = [

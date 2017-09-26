@@ -2,6 +2,7 @@
 
 
 import csv
+<<<<<<< HEAD
 import datetime
 # [print(x) for x in s1_list]
 
@@ -19,6 +20,9 @@ SET PGUSER = wangj
 SET PGCLIENTENCODING = UTF8
 test File: uvarchar.pgc
 test function: test_{}_{}'''
+=======
+
+>>>>>>> ccba8f3086287825e562227c5e27efb92fe677da
 
 # with open(file_name) as f:
 #     csv_data = csv.reader(f)
@@ -61,7 +65,10 @@ print(d1)
 a = set('abracadabra')
 b = set('alacazam')
 
+print("a-b")
 print(a - b)
+
+print("b-a")
 print(b - a)
 
 
@@ -71,6 +78,7 @@ print(sorted(set(basket)))
 print(list(reversed(sorted(set(basket)))))
 
 print(dir(slice(1, 10)))
+<<<<<<< HEAD
 print(slice(1, 10))
 
 import os
@@ -94,3 +102,11 @@ print(os.path.splitext(file3))
 finalname = '{}.txt'.format(os.path.splitext(file1)[0])
 print(finalname)
 print(finalname[-4:])
+=======
+l1 = slice(1, 10)
+print(l1)
+
+a = [1, 2, 3, 4, 5]
+sliceObj = slice(1, 3)
+a[sliceObj]
+>>>>>>> ccba8f3086287825e562227c5e27efb92fe677da
