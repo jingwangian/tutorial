@@ -2,25 +2,16 @@
 
 
 import sys
+import re
 
+s = 'saveChangesInTheEditor'
 
-def solve(a0, a1, a2, b0, b1, b2):
-    # Complete this function
-    A = (a0, a1, a2)
-    B = (b0, b1, b2)
+# cret = re.compile('[a-z]+|[A-Z][a-z]+')
 
-    point_a = 0
-    point_b = 0
-    for x, y in zip(A, B):
-        if x > y:
-            point_a += 1
-        elif x < y:
-            point_b += 1
-    return point_a, point_b
+# cret.search()
 
+# m = re.findall(r"([a-z]+)|([A-Z][a-z]+) ", "saveChangesInTheEditor")
+m = re.findall(r"([a-z]+|[A-Z][a-z]+)", "saveChangesInTheEditor")
 
-x1 = 10**20
-
-
-print(list(range(5)))
-print(list(range(-1, -(5 + 1), -1)))
+if m:
+    [print('{}.{}'.format(x[0], x[1])) for x in list(enumerate(m))]

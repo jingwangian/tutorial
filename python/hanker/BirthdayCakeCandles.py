@@ -31,6 +31,7 @@ We have one candle of height , one candle of height , and two candles of height 
 
 
 import sys
+from itertools import groupby
 
 
 def birthdayCakeCandles(n, ar):
