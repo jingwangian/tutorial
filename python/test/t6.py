@@ -2,6 +2,7 @@
 
 
 import sys
+<<<<<<< HEAD
 from itertools import dropwhile
 
 s = 'beabee-feab'
@@ -23,3 +24,18 @@ for i in range(int(len(S) / 3)):
     if msg != 'SOS':
         num += 1
 print(num)
+=======
+import re
+
+s = 'saveChangesInTheEditor'
+
+# cret = re.compile('[a-z]+|[A-Z][a-z]+')
+
+# cret.search()
+
+# m = re.findall(r"([a-z]+)|([A-Z][a-z]+) ", "saveChangesInTheEditor")
+m = re.findall(r"([a-z]+|[A-Z][a-z]+)", "saveChangesInTheEditor")
+
+if m:
+    [print('{}.{}'.format(x[0], x[1])) for x in list(enumerate(m))]
+>>>>>>> 9b802459fa3e404067370f2ebe75b5c7c9aac61f
