@@ -13,7 +13,7 @@ import itertools as it
 
 obj = it.permutations('ABCD', 2)
 
-[print(list(it.permutations('ABCD', x))) for x in range(1, 4)]
+[print(list(it.permutations('ABCD', x))) for x in range(1, 4 + 1)]
 
 '''
 [('A',), ('B',), ('C',), ('D',)]
@@ -23,9 +23,9 @@ obj = it.permutations('ABCD', 2)
 [('A', 'B', 'C'), ('A', 'B', 'D'), ('A', 'C', 'B'), ('A', 'C', 'D'), ('A', 'D', 'B'), ('A', 'D', 'C'), ('B', 'A', 'C'), ('B', 'A', 'D'), ('B', 'C', 'A'), ('B', 'C', 'D'), ('B', 'D', 'A'), ('B', 'D', 'C'), ('C', 'A', 'B'), ('C', 'A', 'D'), ('C', 'B', 'A'), ('C', 'B', 'D'), ('C', 'D', 'A'), ('C', 'D', 'B'), ('D', 'A', 'B'), ('D', 'A', 'C'), ('D', 'B', 'A'), ('D', 'B', 'C'), ('D', 'C', 'A'), ('D', 'C', 'B')]
 '''
 
-def printkey(obj):
-    def f(n):
-        return ',' if n % 8 > 0 else None
-    [print(x, end=f(i + 1)) for i, x in (enumerate(dir(obj)))]
+# def printkey(obj):
+#     def f(n):
+#         return ',' if n % 8 > 0 else None
+#     [print(x, end=f(i + 1)) for i, x in (enumerate(dir(obj)))]
 
-printkey(obj)
+# printkey(obj)
