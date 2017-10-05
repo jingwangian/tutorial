@@ -12,10 +12,12 @@ from manager import WorkerManager
 from enum import Enum
 from taskctl import TaskCtlWorker
 
+
 class TaskState(Enum):
-    START=1
-    STOP=2
-    CONTINUE=3
+    START = 1
+    STOP = 2
+    CONTINUE = 3
+
 
 class TimeOut():
     class Timeout_Exception(Exception):
@@ -44,6 +46,7 @@ class TimeOut():
         [print(type(x)) for x in args]
         raise self.Timeout_Exception()
 
+
 class StopException(Exception):
     def __init__(self, error=None):
         self.error = error
@@ -53,7 +56,7 @@ class StopException(Exception):
 
 
 def new_task_func(num, *args):
-    print('worker_{} invoke new_task_func {}'.format(num,args))
+    print('worker_{} invoke new_task_func {}'.format(num, args))
 
 
 def print_fun(num, *args):
@@ -81,6 +84,7 @@ def sig_handle(signum, frame):
         print("Receive SIGALRM")
         raise TimeOut.Timeout_Exception()
 
+
 def get_task_state():
     """
     This function return the task should be done.
@@ -89,12 +93,13 @@ def get_task_state():
     gmt1 = time.localtime(time.time())
     if gmt1.tm_hour > 23:
         return TaskState.STOP
-    elif gmt1.tm_hour ==0 and gmt1.tm_min >=30:
+    elif gmt1.tm_hour == 0 and gmt1.tm_min >= 30:
         return TaskState.START
-    elif gmt1.tm_hour ==15 and gmt1.tm_min >=4:
+    elif gmt1.tm_hour == 15 and gmt1.tm_min >= 4:
         return TaskState.START
     else:
         return TaskState.CONTINUE
+
 
 def main():
     print('Enter the main function')
@@ -108,7 +113,7 @@ def main():
     task_q = Queue()
 
     wk_manager = WorkerManager()
-    wk_manager.alloc_workers(5,target=print_fun, task_q = task_q)
+    wk_manager.alloc_workers(10, target=print_fun, task_q=task_q)
     # for num in range(1, 5):
     #     wk = Worker(num, print_fun, task_q, 1, 2, 3)
     #     worker_list.append(wk)
@@ -117,18 +122,18 @@ def main():
 
     wk_manager.start_workers()
 
-    task_worker = TaskCtlWorker(0,None,task_q)
+    task_worker = TaskCtlWorker(0, None, task_q)
 
     task_worker.start()
 
     try:
         while(1):
-            wk_manager.exec_primary_task(new_task_func,*[1,2,3,4])
-            time.sleep(12)
+            # wk_manager.exec_primary_task(new_task_func, *[1, 2, 3, 4])
+            time.sleep(5)
             # time.sleep(5)
             # task_state = get_task_state()
             # print(task_state)
-            # [task_q.put(x) for x in range(1, 10)]
+            [task_q.put(x) for x in range(1, 10)]
     except StopException:
         print("Go into StopException")
     except TimeOut.Timeout_Exception:
@@ -139,7 +144,6 @@ def main():
         wk_manager.stop_workers()
         task_worker.stop()
         task_worker.join()
-
 
     # [w.stop() for w in worker_list]
 

@@ -1,38 +1,32 @@
-## 1
-Why the RDS instance name are t2,r3,m3,m4, are there some meaning?
+1. Can you tell me more about the day-to-day responsibilities of this job?
+This is your chance to learn as much as possible about the role so you can decide whether this is a job you really want. By learning more about the day-to-day tasks, you will also gain more insight into what specific skills and strengths are needed and you can address any topics that haven’t already been covered.
 
+2. What do you think are the most important qualities for someone to excel in this role?
+This question can often lead to valuable information that’s not in the job description. It can help you learn about the company culture and expectations so you can show that you are a good fit.
 
-## 2
-If setting the huge_pages to on, how can user set the Hugepagesize ?
+3. What are your expectations for this role during the first 30 days, 60 days, year?
+Find out what your employer’s expectations are for the person in this position.
 
-$ head -1 $PGDATA/postmaster.pid
-4170
-$ grep ^VmPeak /proc/4170/status
-VmPeak:  6490428 kB
-$ grep ^Hugepagesize /proc/meminfo
-Hugepagesize:       2048 kB
+4. Describe the culture of the company.
+Are you a good fit for this particular organization? Make sure you are comfortable with the culture and the dynamic of the company.
 
-sysctl -w vm.nr_hugepages=3170
+5. Where do you think the company is headed in the next 5 years?
+If you plan to be in this role for several years, make sure the company is growing so you can grow with the company.
 
+6. Who do you consider your top competitor, and why?
+You should already have an idea of the company’s major competitors, but it can be useful to ask your interviewer for their thoughts. Naturally, they will be able to give you insight you can’t find anywhere else.
 
-## 3.1 What is the max Maximum number of semaphores system-wide and Maximum size of shared memory segment when I created a PostgreSQL instances? Can I changed it?
-## 3.2 Can user have a look or modify the system v resources?
+7. What are the biggest opportunities facing the company/department right now?
+This question shows your drive to seize opportunity and may help you learn more about where the company will be focusing over the next several months.
 
+8. What are the biggest challenges facing the company/department right now?
+On the flip side, you may want to ask about challenges. This question can help you uncover trends and issues in the industry and perhaps identify areas where your skills could save the day.
 
-## 4.1 Is there swap file used in RDS instance? What I konw is there isn't swaf file when creating a EC2 instance.
-## 4.2 Why there is no swap file when creating a EC2 instance?
+9. What do you like best about working for this company?
+Ask about your interviewer’s personal experience for additional insight into the company’s culture.
 
+10. What is the typical career path for someone in this role?
+This question can help you learn whether the company promotes from within, and how career advancement works within the organization. By asking the question, you show your interest in growing with the organization — just be careful not to phrase it in a way that sounds too self-serving (i.e. When can I expect a raise and a promotion?).
 
-## 5 How can docker be used based on EC2? Is docker running on the a virtual machine?
-
-## 6 Is there NAS used as the storage for the AWS RDS ? How does make sure the data has been flushed into the NAS because I got to know the NAS has their cash.
-
-
-## 7 The method of stop the PostgreSQL instance.
-Using the pg_ctl command, there are 3 ways to stop the PostgreSQL : start, fast, immediate. If I use the stop in the Instance Actions menu to stop the PG, what type of method will be used?
-
-## 8 I stop the PostgreSQL instance, but can't change the Parameter Group from default to my created one.
-
-## If I reboot the RDS, will the Endpoint be changed or not?
-flight-db.c6vuzqnavuqr.ap-southeast-2.rds.amazonaws.com
-flight-dbs.c6vuzqnavuqr.ap-southeast-2.rds.amazonaws.com
+11. How do I compare with the other candidates you’ve interviewed for this role?
+This is a slightly risky choice. You don’t want to put the interviewer in an awkward position. However, if things are going well and you’ve built a strong rapport, this question can help you see if there are any concerns or issues that you could address to show why you’re the best person for the job.
