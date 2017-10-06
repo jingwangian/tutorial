@@ -36,6 +36,15 @@ def find_total_substring(s1, s2):
 #     first, last, d = [int(first), int(last), str(d)]
     # your code goes here
 
+gen_health_list = list(zip(genes, health))
+
+value = 0
+max_value = 0
+min_value = 0
+for gen in gen_health_list[first, last + 1]:
+    number = find_total_substring(d, gen[0])
+    value += number * gen[1]
+
 
 s1 = 'baaaaaadsaaaxbaa'
 s2 = 'aa'
