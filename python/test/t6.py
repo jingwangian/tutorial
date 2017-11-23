@@ -2,10 +2,17 @@
 
 
 import sys
+import datetime
+import urllib.parse
 
 
-count = 0
+class TaskResultQueueMsg():
+    SUCCESS = 0
+    FAILED = 1
 
+    def __init__(self, task_id, task_result=SUCCESS):
+        self.task_id = task_id
+        self.task_result = task_result
 
 class Person():
     name = ''

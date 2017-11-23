@@ -37,15 +37,13 @@ def find_total_substring_v2(s1, s2):
     '''
 
     s1_len = len(s1)
-    # s2_len = len(s2)
 
     total_value = 0
     pos = 0
-    end_pos = s1_len - 1
+    end_pos = s1_len
 
     while (pos < end_pos):
         try:
-            # print('pos is {},end_pos is {}'.format(pos, end_pos))
             ret = s1[pos:].find(s2)
         except IndexError:
             break
@@ -60,19 +58,26 @@ def find_total_substring_v2(s1, s2):
 
 
 def get_dna_value(gen_health_list, d):
-    value = 0
+    total_value = 0
     d1 = dict()
     for gen in gen_health_list:
+        # value = 0
+        # number = find_total_substring_v2(d, gen[0])
         # if d1.setdefault(gen[0], int(-1)) != -1:
         #     number = d1[gen[0]]
         # else:
-        #     # number = find_total_substring_v2(d, gen[0])
-        #     number = 1
+        #     number = find_total_substring_v2(d, gen[0])
         #     d1[gen[0]] = number
-        number = 2
-        value += number * gen[1]
 
-    return value
+        try:
+            number = d1[gen[0]]
+        except KeyError:
+            number = find_total_substring_v2(d, gen[0])
+            d1[gen[0]] = number
+
+        total_value += number * gen[1]
+
+    return total_value
 
 # n = int(input().strip())
 # genes = input().strip().split(' ')
@@ -82,6 +87,40 @@ def get_dna_value(gen_health_list, d):
 #     first, last, d = input().strip().split(' ')
 #     first, last, d = [int(first), int(last), str(d)]
     # your code goes here
+
+
+def test_case3():
+    with open('dna_input.txt') as f:
+        n = f.readline()
+        genes = f.readline().strip().split(' ')
+        health = list(map(int, f.readline().strip().split(' ')))
+        # gen_health_list = list(zip(genes, health))
+        dna_value = 0
+        max_value = 0
+        min_value = sys.maxsize
+
+        s = int(f.readline().strip())
+        # for a0 in range(s):
+        for a0 in range(10000):
+            first, last, d = f.readline().strip().split(' ')
+            first, last, d = [int(first), int(last), str(d)]
+            print('start to handle dna {}-{}-{}'.format(first, last, d))
+            d1 = dict()
+            for i in range(first, last + 1):
+                try:
+                    value = d1[genes[i]]
+                except KeyError:
+                    number = find_total_substring_v2(d, genes[i])
+                    value = number * health[i]
+                    d1[genes[i]] = value
+
+                dna_value += value
+
+            max_value = max(max_value, dna_value)
+            min_value = min(min_value, dna_value)
+
+        print('max_value = {}'.format(max_value))
+        print('min_value = {}'.format(min_value))
 
 
 def test_case2():
@@ -96,7 +135,7 @@ def test_case2():
 
         s = int(f.readline().strip())
         # for a0 in range(s):
-        for a0 in range(100):
+        for a0 in range(10000):
             first, last, d = f.readline().strip().split(' ')
             first, last, d = [int(first), int(last), str(d)]
             print('start to handle dna {}-{}-{}'.format(first, last, d))
@@ -135,7 +174,7 @@ def test_case1():
 
 def main():
     t1 = time.time()
-    test_case2()
+    test_case1()
     t2 = time.time()
 
     print('finished task using {} seconds'.format(t2 - t1))

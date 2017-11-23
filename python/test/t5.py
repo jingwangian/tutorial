@@ -7,24 +7,26 @@ import datetime
 
 # print(' '.join(map(lambda x: '0x{}'.format(x), s1.split())))
 
-file_name = '/media/sf_hostshare/1/a.csv'
-new_file_name = '/media/sf_hostshare/1/a_new.csv'
-
-str_tmp = r'''SET PATH = C: \fep\fsepv95client64\lib
-C: \fep\fsepv95client64\bin
-C: \fep\fsepv95client64\include
-%PATH%
-SET PGHOST = 10.44.37.33
-SET PGUSER = wangj
-SET PGCLIENTENCODING = UTF8
-test File: uvarchar.pgc
-test function: test_{}_{}'''
+file_name = '/db/bitbucket/flightv3/node/src/script/route.csv'
+new_file_name = '/db/bitbucket/flightv3/node/src/script/route_new.csv'
 
 
-# with open(file_name) as f:
-#     csv_data = csv.reader(f)
+with open(file_name) as f, open(new_file_name, 'w') as nf:
+    csv_data = csv.reader(f)
+    csv_writer = csv.writer(nf)
 
-#     [print(x[0]) for x in csv_data]
+    # [csv_writer.writerow([x[0], x[2], x[3]]) for x in csv_data]
+
+    route_list = [[x[0], x[2], x[3]] for x in csv_data][1:]
+
+    # print(route_list)
+
+    route_list.sort(key=lambda x: int(x[0]))
+
+    [print(x) for x in route_list]
+
+    csv_writer.writerow(['id', 'from_city_id', 'to_city_id'])
+    [csv_writer.writerow(x) for x in route_list]
 
 
 # with open(new_file_name, 'w') as nf:
@@ -35,66 +37,3 @@ test function: test_{}_{}'''
 #     [csv_writer.writerow([str_tmp.format('pvar', x)]) for x in range(1, 13)]
 
 # print("finish write rows into {}".format(new_file_name))
-
-
-vec = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-print([num for elem in vec for num in elem])
-
-
-matrix = [
-    [1, 2, 3, 4],
-    [5, 6, 7, 8],
-    [9, 10, 11],
-]
-
-# print([[item[i] for item in matrix] for i in range(0, 4)])
-
-print(list(zip(*matrix)))
-
-d1 = dict(name='wangj')
-d1[(1, 2)] = 30
-
-d1[(2, 1)] = 40
-
-d1[(1, 2, 5)] = 30
-print(d1)
-
-a = set('abracadabra')
-b = set('alacazam')
-
-print("a-b")
-print(a - b)
-
-print("b-a")
-print(b - a)
-
-
-basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
-print(sorted(set(basket)))
-
-print(list(reversed(sorted(set(basket)))))
-
-print(dir(slice(1, 10)))
-print(slice(1, 10))
-
-import os
-p1 = os.getcwd()
-print(p1)
-print(os.path.abspath(p1))
-
-file1 = '../v3/results/flight_1_5._xt'
-
-file2 = '../v3/results/flight_1_5'
-file3 = '../v3/results/flight_1_5/'
-
-print(os.path.split(file1))
-print(os.path.split(file2))
-print(os.path.split(file3))
-
-print(os.path.splitext(file1))
-print(os.path.splitext(file2))
-print(os.path.splitext(file3))
-
-finalname = '{}.txt'.format(os.path.splitext(file1)[0])
-print(finalname)
-print(finalname[-4:])
