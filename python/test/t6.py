@@ -7,38 +7,40 @@ import sys
 count = 0
 
 
-def find_total_substring(s1, s2):
-    '''
-    Find the total number of s2 in s1.
-    Example: s1='aaaab'  s2='aa', number = 3
-    Explain: 1st time found is s1[0],s1[1]
-             2nd time found is s1[1],s1[2]
-             3rd time found is s1[2],s1[3]
-    '''
+class Person():
+    name = ''
+    age = 0
+    addr = ''
 
-    pos = s1.find(s2)
-    if pos != -1:
-        try:
-            print('pos is {}'.format(pos))
-            return (find_total_substring(s1[pos + 1:], s2) + 1)
-        except IndexError:
-            return 1
-    else:
-        return 0
+    def __init__(self, name, age, addr):
+        self.name = name
+        self.age = age
+        self.addr = addr
 
 
-# n = int(input().strip())
-# genes = input().strip().split(' ')
-# health = list(map(int, input().strip().split(' ')))
-# s = int(input().strip())
-# for a0 in range(s):
-#     first, last, d = input().strip().split(' ')
-#     first, last, d = [int(first), int(last), str(d)]
-    # your code goes here
+class Student(Person):
+    def __init__(self, name, age, addr, school, stu_class):
+        self.school = school
+        self.stu_class = stu_class
+        super().__init__(name, age, addr)
+
+    def __str__(self):
+        # return '{self.name}--{self.age}--{self.addr}--{self.school}'.
+        return '{}--{}--{}--{}--{}'.format(self.name, self.age, self.addr, self.school, self.stu_class)
 
 
-s1 = 'baaaaaadsaaaxbaa'
-s2 = 'aa'
+class SchoolClass():
+    student_list = []
 
-result = find_total_substring(s1, s2)
-print(result)
+    def __init__(self):
+        self.student_numbers = 0
+
+
+stu_a = Student('Jack', 12, 'city 01', 'city primary school', 'class 1')
+stu_b = Student('John', 12, 'city 02', 'city primary school', 'class 1')
+stu_c = Student('Jason', 13, 'city 03', 'city primary school', 'class 2')
+
+print(stu_a)
+print(stu_b)
+
+print(dir(stu_a))
