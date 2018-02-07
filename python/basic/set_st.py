@@ -78,10 +78,10 @@ s3.difference_update(s2)
 print(s1, s3)
 
 # Union
-print('s1.union(s2):', s1.union(s2))
+print('s1.union(s2)--->', s1.union(s2))
 
 # Intersection
-print('s1.intersection(s2):', s1.intersection(s2))
+print('s1.intersection(s2)--->', s1.intersection(s2))
 
 
 # Using Discard
@@ -91,14 +91,19 @@ print(s3)
 
 a = set('abracadabra')
 b = set('alacazam')
+c = set('xyz')
 
-print('a - b', a - b)
-print('b - a', b - a)
-print('a & b', a & b)
-print('a | b', a | b)
-print('a ^ b', a ^ b)
+print('a - b : ', a - b)
+print('b - a : ', b - a)
+print('a & b : ', a & b)
+print('a | b : ', a | b)
+print('a ^ b : ', a ^ b)
 
+print('a & c: ', a & c)
 
+s1 = set('abcde')
+s1.remove('b')
+print(s1)
 # def f(n):
 #     return ',' if n % 8 > 0 else None
 # # print(dir(d1))

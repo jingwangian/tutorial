@@ -16,7 +16,7 @@ class MyHTMLParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         print("Start tag:[{}]".format(self.getpos()), tag)
         for attr in attrs:
-            print("     attr:", attr)
+            print("     attr:[{}]".format(self.getpos()), attr)
             if attr[0] == 'href':
                 self.href_list.append(attr[1])
 
@@ -52,5 +52,10 @@ c1 = '''<html><head><title>Test</title></head>
             <body><h1>Parse me!</h1></body></html>'''
 parser = MyHTMLParser()
 parser.feed(r.content.decode())
+
+print('-' * 20)
+print(type(r.content))
+
+# [print(chr(x)) for x in r.content]
 
 # [print(x) for x in parser.href_list]

@@ -20,7 +20,16 @@ class Student:
     def __repr__(self):
         return repr((self.name, self.grade, self.age))
 
+
+def sort_fun(x):
+    return x[2]
+
+
+print("using lambda --->", end=' ')
 print(sorted(student_tuples, key=lambda student: student[2]))
+
+print("using sort_fun --->", end=' ')
+print(sorted(student_tuples, key=sort_fun))
 
 print('using itemgetter')
 print(sorted(student_tuples, key=itemgetter(1, 2)))
@@ -38,8 +47,8 @@ student_objects = [
 s1 = sorted(student_objects, key=lambda student: student.age)   # sort by age
 print(s1)
 s2 = sorted(student_objects, key=attrgetter('age'))
-print(s2)
-print(sorted(s2, key=attrgetter('name'), reverse=True))
+print("s2--->", s2)
+print("sorted s2--->", sorted(s2, key=attrgetter('name'), reverse=True))
 
 
 l1 = [1, 2, 3]
