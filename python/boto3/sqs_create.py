@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+import boto3
+
+sqs = boto3.resource('sqs')
+
+
+# Create the queue. This returns an SQS.Queue instance
+queue = sqs.create_queue(QueueName='test', Attributes={'DelaySeconds': '5'})
+# You can now access identifiers and attributes
+print(queue.url)
+print(queue.attributes.get('DelaySeconds'))
+
+
+url='https://ap-southeast-2.queue.amazonaws.com/718584735217/test'

@@ -55,10 +55,17 @@ re.search --->_sre.SRE_Match
 '''
 import re
 
+print_num=1
 
+def print_sep(num):
+	print('')
+	print('{}:'.format(num)+'-'*20)
+
+
+print_sep(1)
 exampleString = """
 Jessica is 15 years old, and Daniel is 27 years old.
-Edward is 97, and his grandfather, Oscar, is 102.
+Edward is 97, and his grandfather, Oscar, is 102, jing is 42.
 """
 
 ages = re.findall(r'\d{1,3}', exampleString)
@@ -73,25 +80,30 @@ for eachName in names:
 print(ageDict)
 
 
+print_sep(2)
 #*? +? ??
 m = re.search(r'a.*b', 'a1ba1234b')
 print(m.group())
 
 
+print_sep(3)
 # Using *? so no greedy
 print("# Using *? so no greedy")
 m = re.search(r'a.*?b', 'a1ba1234b')
-print(m.group())
+print(m.group())   #--->a1b
 
 m = re.search('a{3,5}', 'aaaaa',)
-print(m.group())
+print(m.group())   #---->aaaaa
 
 m = re.search('a{3,5}?', 'aaaaa',)
-print(m.group())
+print(m.group())   #---->aaa
 
+print("""---ret = re.findall(r'aa', 'aaababacabbaacaaada')""")
 ret = re.findall(r'aa', 'aaababacabbaacaaada')
 print(ret)
+print('')
 
+print("""---re.search(r'Oscar.*(?P<word>[0-9]{3})', exampleString)""")
 m = re.search(r'Oscar.*(?P<word>[0-9]{3})', exampleString)
 if m is not None:
     print('Oscar is {}'.format(m.group('word')))
