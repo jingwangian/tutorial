@@ -46,11 +46,12 @@ print(list(a.items()))
 # Using iter
 print([x for x in iter(a)])
 
-# Using get and return default value
+print('')
+print("# Using get and return default value")
 print(a.get('bb', 'none'))
 print(a.setdefault('four', 100))
-print("print(a)--->")
-print(a)
+print("print(a)--->",a)
+print('')
 
 # def f(n):
 #     return ',' if n % 8 > 0 else None
