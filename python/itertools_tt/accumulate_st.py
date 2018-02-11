@@ -25,7 +25,7 @@ print(list(accumulate([1, 2, 3, 4, 5], lambda x, y: x + y + 100)))  # - - > 1 3 
 1,2,3 103+3+100 = 206
 '''
 
-print(list(accumulate([100, 50, 30, 20, 10], lambda x, y: x - y)))  # - - > 1 3 6 10 15
+print(list(accumulate([100, 50, 30, 20, 10], lambda x, y: x - y)))  # - - > [100, 50, 20, 0, -10]
 
 # def printkey(obj):
 #     def f(n):

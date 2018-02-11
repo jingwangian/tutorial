@@ -24,13 +24,15 @@ class C:
         print('Del x attribute')
         del self._x
 
+
 c = C()
 print(c.x)
 c.x = 100
 print(c.x)
+print("c.__dict__--->", c.__dict__)
 del c.x
 # Now no x in the c if print c.__dict__
-print(c.__dict__)
+print("c.__dict__--->", c.__dict__)
 # attribute can be added dynamically
 c.y = 200
 print('c.y={}'.format(c.y))
@@ -38,6 +40,7 @@ print('c.y={}'.format(c.y))
 # If set x attribute again, the _x will be used again
 c.x = 300
 print('c.x={}'.format(c.x))
+print("c.__dict__--->", c.__dict__)
 
 # Can't visit c._x directly
 try:

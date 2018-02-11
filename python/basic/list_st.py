@@ -38,12 +38,13 @@ print('l1[::2]:', l1[::2])
 #-->l1[::2]: [1, 3, 5]
 
 # del
+print("l3 = l1.copy()")
 l3 = l1.copy()
 del l3[::2]
 print('l3:', l3)
-
+print('l1:', l1)
 # *
-print('l3 * 2:', l3 * 2)
+print('l3 * 2---->', l3 * 2)
 
 # pop
 l3.pop(1)
@@ -95,6 +96,7 @@ l3 = l1 + l2
 print(l3)
 
 # Using count to caculate  every number of alphabits and print it
+print("# Using count to caculate  every number of alphabits and print it")
 s1 = 'hello world china like topic book windows storys'
 keys = set([x for x in s1])
 print([(k, s1.count(k)) for k in sorted(keys)])
@@ -108,4 +110,5 @@ print([(k, s1.count(k)) for k in sorted(keys)])
 
 a = [1, 2, 3, 4, 5]
 sliceObj = slice(1, 3)
-a[sliceObj]
+print("slice(1, 3)-->", slice(1, 3))
+print("a[sliceObj]--->", a[sliceObj])

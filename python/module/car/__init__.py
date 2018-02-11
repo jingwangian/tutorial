@@ -7,7 +7,7 @@ import sys
 print('car__init path:', sys.path)
 
 
-from car.car import Car
+from .car import Car
 
 __all__ = ['Car', ]
 

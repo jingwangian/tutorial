@@ -44,14 +44,18 @@ print(c2)
 print(c1.__dict__)
 
 # Here value1 and value2 will be instance value
+print("# Here value1 and value2 will be instance value")
 c1.value1 = 1000
 c1.value2 = 2000
 print(c1.value1, c1.value2)
 print(c1.__dict__)
-print(c2.value1, c2.value2)
+print("c2.value1, c2.value2--->", c2.value1, c2.value2)
+print("C.value1, C.value2--->", C.value1, C.value2)
 print(c1)
 print(c2)
 
+print('c1.__dict__:', c1.__dict__)
+print('c2.__dict__:', c2.__dict__)
 del c1.value1
 del c1.value2
 print('c1.value1, c1.value2 -- ', c1.value1, c1.value2)

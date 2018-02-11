@@ -24,6 +24,6 @@ print(t2 > t1)
 
 print(d)
 
-time.strptime("30 Nov 00", "%d %b %y")
-
+tx = time.strptime("30 Nov 00", "%d %b %y")
+print(tx)
 # print(dir(time))

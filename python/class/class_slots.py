@@ -25,6 +25,8 @@ not_slotted.foo = 'abc'
 print(dir(slotted))
 print(dir(not_slotted))
 
+print(not_slotted.__dict__)
+
 
 def get_set_delete_fn(obj):
     def get_set_delete():
