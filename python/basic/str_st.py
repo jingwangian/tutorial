@@ -93,7 +93,7 @@ print(s1.capitalize())
 print(s2.casefold())
 
 # center
-print(s1.center(len(s1) + 3, 'y'))`
+print(s1.center(len(s1) + 3, 'y'))
 print('count of ll in s1:', s1.count('ll'))
 
 print('中'.encode(encoding="utf-16", errors="strict"))
@@ -122,12 +122,12 @@ print('abcdABCDKKll'.swapcase())
 # title
 print(s1.title())
 
-# translate
+print("# translate")
 mpt = str.maketrans('abcd', 'ABCD')
 print(mpt)
 print(s1.translate(mpt))
 
-# partition
+print("# partition")
 print(s1.partition('china'))
 #--->('hello world ', 'china', ' people, lllleedd')
 

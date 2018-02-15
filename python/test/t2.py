@@ -1,49 +1,56 @@
 #!/usr/bin/env python3
 
+"""
+This is the "example" module.
 
-s1 = '''
-asm     else    new     this
-auto    enum    operator    throw
-bool    explicit    private     true
-break   export  protected   try
-case    extern  public  typedef
-catch   false   register    typeid
-char    float   reinterpret_cast    typename
-class   for     return  union
-const   friend  short   unsigned
-const_cast  goto    signed  using
-continue    if  sizeof  virtual
-default     inline  static  void
-delete  int     static_cast     volatile
-do  long    struct  wchar_t
-double  mutable     switch  while
-dynamic_cast    namespace   template     '''
+The example module supplies one function, factorial().  For example,
+
+>>> factorial(5)
+120
+"""
+
+def factorial(n):
+    """Return the factorial of n, an exact integer >= 0.
+
+    >>> [factorial(n) for n in range(6)]
+    [1, 1, 2, 6, 24, 120]
+    >>> factorial(30)
+    265252859812191058636308480000000
+    >>> factorial(-1)
+    Traceback (most recent call last):
+        ...
+    ValueError: n must be >= 0
+
+    Factorials of floats are OK, but the float must be an exact integer:
+    >>> factorial(30.1)
+    Traceback (most recent call last):
+        ...
+    ValueError: n must be exact integer
+    >>> factorial(30.0)
+    265252859812191058636308480000000
+
+    It must also not be ridiculously large:
+    >>> factorial(1e100)
+    Traceback (most recent call last):
+        ...
+    OverflowError: n too large
+    """
+
+    import math
+    if not n >= 0:
+        raise ValueError("n must be >= 0")
+    if math.floor(n) != n:
+        raise ValueError("n must be exact integer")
+    if n+1 == n:  # catch a value like 1e300
+        raise OverflowError("n too large")
+    result = 1
+    factor = 2
+    while factor <= n:
+        result *= factor
+        factor += 1
+    return result
 
 
-# [print(x) for x in sorted(s1.split())]
-
-# import subprocess
-
-# lscmd = 'aws s3 ls s3://flight.pq.11'
-# ret = subprocess.run(lscmd.split(' '), stdout=subprocess.PIPE)
-# [print(x) for x in map(lambda x: x.strip().split(' ')[1].split('/')[0], ret.stdout.decode().splitlines())]
-
-# import os
-# import django
-# from django.template import Context, Template
-
-
-# def test_template():
-#     t = Template("My name is {{ person.first_name }}.")
-#     d = {"person": {"first_name": "Joe", "last_name": "Johnson"}}
-#     print(t.render(Context(d)))
-
-
-# if __name__ == "__main__":
-#     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
-#     test_template()
-
-list1=[]
-
-if not list1:
-    print('list1 is empty')
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()

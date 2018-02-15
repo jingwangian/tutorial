@@ -1,23 +1,27 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-from itertools import groupby, repeat
 
-s1 = 'aaaabbbccddaaxxyyy'
+'''
+input:
+4 
+a a c d
+2
+'''
+from itertools import combinations as cb
+from functools import reduce
 
-s2 = groupby(s1)
+cbnum=[1,2,3,4,5,1,2,3,4]
 
-l1 = [list(g) for k, g in s2]
+total_appears = 0
+for x in cbnum:
+	if x==1:
+		total_appears +=1
 
-# [print(len(list(g)), k) for k, g in s2]
-# [print(k, list(g)) for k, g in s2]
+print(sum(map(lambda x: 1 if x==1 else 0,cbnum)))
 
-print(id(s2))
-print(id(l1))
+
+l1=list(enumerate('aabc',1))
+
 print(l1)
 
-l2 = [(len(x), x[0]) for x in l1]
-
-print(l2)
-
-
-print(list(repeat((1, 2, 3), 3)))
+print(total_appears)
