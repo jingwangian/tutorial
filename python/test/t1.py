@@ -7,19 +7,16 @@ input:
 a a c d
 2
 '''
-from itertools import combinations as cb
-from functools import reduce
+import re
 
-cbnum = [1, 2, 3, 4, 5, 1, 2, 3, 4]
+file_name = '/db2/github/p.txt'
 
+with open(file_name) as rf:
+	# [print(line) for line in rf]
 
-total_appears = 0
-for x in cbnum:
-    if x == 1:
-        total_appears += 1
+	rt_list = re.findall(r'\w+print\w+?\(',rf.read())
 
-print(sum(map(lambda x: 1 if x == 1 else 0, cbnum)))
-
+s1 = set(rt_list)
 
 l1 = list(enumerate('aabc', 1))
 

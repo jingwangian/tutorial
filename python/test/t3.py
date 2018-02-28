@@ -3,14 +3,48 @@
 
 import sys
 
-s1='/a/b/c/d'
+class Student:
+    # name = 'abc'
+    def __init__(self,name):
+        self._name = name
+    def __repr__(self):
+        return repr(self.name)
 
-print(dir(s1))
+    def __str__(self):
+        return str(self.name)
 
-s2=s1.partition('/')
+    @property
+    def name(self):
+        print('getter is invoked')
+        return self._name
 
-s3='10020'
-print(s3.isdigit())
-print(s3.isnumeric())
+    @name.setter
+    def name(self,value):
+        print('setter is invoked')
+        self._name = value
 
-print(s3.center(10,'-'))
+    @name.deleter
+    def name(self):
+        print('deleter is invoked')
+        del self._name
+
+s1 = Student('wang\njing')
+
+print(s1)
+print(repr(s1))
+x1 = str(s1)
+x2 = repr(s1)
+
+print(list(x1))
+print(list(x2))
+
+del s1.name
+
+s1.name='wang\nlin'
+print(s1)
+
+st1 = set([1,2,3,12,3,5,5,6,7])
+print(st1)
+
+st2 = set('hello world')
+print(st2)

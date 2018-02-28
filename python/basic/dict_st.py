@@ -80,5 +80,17 @@ d2 = dict()
 d3 = {'student': 100}
 [print(k, v) for k, v in d2.items()]
 
+print('d2.update(d3)')
 d2.update(d3)
 [print(k, v) for k, v in d2.items()]
+
+
+d1={}
+d1[1]=100
+print(d1)
+d1[1.0] = 200
+print(d1)
+d1[1.00] = 300
+print(d1)
+d1[1.001] = 400
+print(d1[1.0000000000],d1[1.001])
