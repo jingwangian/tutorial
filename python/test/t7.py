@@ -1,19 +1,38 @@
 #!/usr/bin/env python3
+from abc import ABC
+from abc import abstractmethod
 
-from collections import defaultdict
+class Foo:
+    def __getitem__(self, index):
+        pass
+    def __len__(self):
+        print('Foo len')
+        return len(index)
 
+    def get_iterator(self):
+        print('Foo get_iterator')
+        return iter(self)
 
-def f1(n):
-    return 10 if n > 10 else 1
+class MyIterable(ABC):
+    @abstractmethod
+    def __iter__(self):
+        while False:
+            yield None
 
+    def get_iterator(self):
+        print('My ABC get_iterator')
+        return self.__iter__()
 
-print(f1(20))
-print(f1(9))
+    @classmethod
+    def __subclasshook__(cls, C):
+        if cls is MyIterable:
+            if any("__iter__" in B.__dict__ for B in C.__mro__):
+                return True
+        return NotImplemented
 
-d = defaultdict(int)
+MyIterable.register(Foo)
 
-d['a'] -= 1
+f = Foo([1,2,3,4])
 
-d['a'] -= 1
-
-print(d['a'])
+for x in f:
+    print(x)
