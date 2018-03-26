@@ -85,6 +85,17 @@ def get_url_list_from_file(file_name):
 
     return url_list
 
+
+class FileTransport:
+    pass
+
+class EndPoint:
+    pass
+
+class FileStatus:
+    pass
+
+
 def main():
     results = []
 
