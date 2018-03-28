@@ -1,15 +1,9 @@
-#!/usr/bin/env python
-
 """
 EndPoint Definition
 """
 
-
-import io
 import abc
-
-filename='a.txt'
-
+from dtb.servers.smtp import connection
 
 class SourceEndPoint(metaclass=abc.ABCMeta):
     """
@@ -47,7 +41,7 @@ class SourceEndPoint(metaclass=abc.ABCMeta):
         If the file is in the sub_path, then the relative path name will be as part of the file name 
         like 'incoming/a1.tsv'.
 
-        Example: 
+        Usage: 
             listdir(pattern = 'incoming/*.tsv')
             The return list is: ['incoming/a1.tsv','incoming/a2.tsv','incoming/a2.tsv' ]
         """
@@ -127,19 +121,14 @@ class SFTPEndPoint(SourceEndPoint, DestEndPoint):
         print("SFTPEndPoint: {} ---> {}".format(src,dest))
 
 
-class EndPointFactory():
-    def __call__(self, name: str=None) -> SmtpConnection:
-        init_args = self.get(name)
-        return SmtpConnection(**init_args)
+class EndPointFactory:
+    """
+    Create a endpoint instance
+    """
 
-endpoint = FSEndPoint('point1')
+    def __init__(self, config_name):
+        self.config_name
 
-print(endpoint)
-
-print(endpoint('abc'))
-
-endpoint.open('a1.txt')
-
-endpoint.listdir()
-
-endpoint.transfer('a.txt','b.txt','.',None)
+    def __call__(self)
+        endpoint = []
+        return endpoint

@@ -9,40 +9,55 @@ import time
 import concurrent.futures
 import requests
 
-class FileTransport:
-    """
-    Move the file from src to dest.
-    """
-    def __init__(self):
-        self.rules = []
-        self.endpoint_list = []
-        self.file_list = []
 
-    def init_rules(self):
-        pass
+max_workers = 2
 
-    def init_endpoint(self, endpoint_name):
-        pass
+URLS = ['http://www.foxnews.com/',
+        'http://www.cnn.com/',
+        'http://europe.wsj.com/',
+        'http://www.bbc.co.uk/',
+        'http://some-made-up-domain.com/']
 
-    def run(self):
-        """
-        Checking files status and make some actions
-        """
-        for r in self.rules:
-            files_state = r[0].get_files_state(r[1])
-        
 
-class EndPoint:
-    """
-    Hold a endpoint information
-    """
-    pass
+WORK_DIR="incoming"
 
-class FileStatus:
+# Retrieve a single page and report the URL and contents
+def load_url(url, timeout):
+    print('Downloading from URL: {}'.format(url))
+    r = requests.get(url, timeout=timeout)
+    print("Status = {} for URL = {}".format(r.status_code,url))
+    time.sleep(3)
+    # with urllib.request.urlopen(url, timeout=timeout) as conn:
+    #     return conn.read()
+    return r.text
+
+executor =  concurrent.futures.ThreadPoolExecutor(max_workers=max_workers)
+
+def execute_download(url, results):
+    fe = executor.submit(load_url, url, 60)
+    results.append((fe,url))
+    return results
+
+def check_future_list(future_list):
+    """check the future in future_list
     """
-    Hold a file status information
-    """
-    pass
+
+    print("Enter to check_future_list")
+    num = 0
+    list_len = len(future_list)
+    while(num <list_len):
+        future = future_list[num]
+        if future.done():
+            future_list.pop(num)
+            print("Removed {} from future_list".format(future[1]))
+            try:
+                data = future.result()
+            except Exception as exc:
+                print('%r generated an exception: %s' % (url, exc))
+            else:
+                print('%r page is %d bytes' % (url, len(data)))
+
+    # print("Enter to check_future_list")
 
 
 def main():

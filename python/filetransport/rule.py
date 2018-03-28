@@ -1,16 +1,25 @@
-#!/usr/bin/env python
-
 """
-EndPoint Definition
+Rules Definition
 """
 
 import endpoint
 
 class Rule:
     def __init__(self):
+        self.src_endpoint_name = ''
         self.src_endpoint = None
+        self.dest_endpoint_name = ''
         self.dest_endpoint = None
         self.match_str = ''
+
+    def check_incoming_files(self):
+        """
+        Return the files stat from the src_endpoint
+        """
+
+        incoming_files = []
+
+        return incoming_files
 
 
 class Rules:
@@ -23,26 +32,34 @@ class Rules:
     def __init__(self):
         self.rules_list = []
 
-    def get_endpoint(self,endpoint_name, src=True):
+    def get_src_endpoint(self,endpoint_name):
         """
         Find and Return the endpoint by the name
         """
-        if src:
-            # e is a namedtuple
-            for e in self.rules_list:
-                if e['name'] = endpoint_name:
-                    return e['endpoint']
 
+        # e is a namedtuple
+        for r in self.rules_list:
+            if r.src_endpoint_name = endpoint_name:
+                return r.src_endpoint
 
-# class RulesFactory(NamedConfiguration):
-#     """
-#     Return the a list contains all rule
-#     """
-#     pass
+    def get_dest_endpoint(self,endpoint_name):
+        """
+        Find and Return the endpoint by the name
+        """
 
+        # e is a namedtuple
+        for r in self.rules_list:
+            if r.dest_endpoint_name = endpoint_name:
+                return r.dest_endpoint
 
-def get_rules(*args):
+class RulesFactory:
+    """
+    Create a rules instance
+    """
 
-    rule_list = []
+    def __init__(self, config_name):
+        self.config_name
 
-    return rule_list
+    def __call__(self)
+        rules = []
+        return rules

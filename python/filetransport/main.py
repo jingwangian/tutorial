@@ -58,42 +58,6 @@ def check_future_list(future_list):
                 print('%r page is %d bytes' % (url, len(data)))
 
     # print("Enter to check_future_list")
-def check_incoming_files():
-    """Check the input file
-    
-    Return a file_list
-    """
-
-    print("Enter check_incoming_files")
-
-    files = []
-
-    ret_list = os.listdir(WORK_DIR)
-
-    for r in ret_list:
-        if r.lower().endswith('txt'):
-            file_name = os.path.join(WORK_DIR,r)
-            files.append(file_name)
-
-    return files
-
-def get_url_list_from_file(file_name):
-    """Get the url_list from the content of the file
-    """
-    url_list = []
-
-
-    return url_list
-
-
-class FileTransport:
-    pass
-
-class EndPoint:
-    pass
-
-class FileStatus:
-    pass
 
 
 def main():
