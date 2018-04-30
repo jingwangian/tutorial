@@ -3,6 +3,8 @@ from abc import ABC
 from abc import abstractmethod
 
 class Foo:
+    def __init__(self,index):
+        self.index = index
     def __getitem__(self, index):
         pass
     def __len__(self):
@@ -32,7 +34,13 @@ class MyIterable(ABC):
 
 MyIterable.register(Foo)
 
-f = Foo([1,2,3,4])
+# f = Foo([1,2,3,4])
 
-for x in f:
-    print(x)
+# for x in f:
+#     print(x)
+
+
+def greeting(name: str) -> str:
+    print(name)
+
+greeting(1)

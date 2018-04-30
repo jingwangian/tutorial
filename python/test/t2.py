@@ -1,12 +1,35 @@
 #!/usr/bin/env python3
 
 
-l1=[1,2,3,4,5]
-l2=[7,8,9]
-l3=['a','b','c','d']
-lf=map(lambda x,y,z: (x,y,z), l1,l2,l3)
+file_name = 't3.p'
 
-print(list(lf))
+def t1():
+    f = None
+    try:
+        f = open(file_name)
+        print(f.readline())
+    # except FileNotFoundError:
+    #     print("FileNotFoundError")
+    #     print("return here")
+    #     return 100
+    finally:
+        print("t1: Go to finally")
+        if f:
+            print("Close ",file_name)
+            f.close()
 
+    print("before return 10")
 
-print(list(zip(l1,l2,l3)))
+    return 10
+
+def main():
+    try:
+        print("t1 = ",t1())
+    except FileNotFoundError:
+        print("main: FileNotFoundError")
+        raise
+    finally:
+        print("main: Go to finally")
+
+if __name__ == '__main__':
+    main()
