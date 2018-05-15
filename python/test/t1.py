@@ -9,17 +9,11 @@ a a c d
 '''
 import re
 
-file_name = '/db2/github/p.txt'
+import string
 
-with open(file_name) as rf:
-	# [print(line) for line in rf]
+CHARACTERS = list(string.ascii_letters) + [""]
 
-	rt_list = re.findall(r'\w+print\w+?\(',rf.read())
+print(CHARACTERS)
+print(CHARACTERS.index('c'))
 
-s1 = set(rt_list)
-
-l1 = list(enumerate('aabc', 1))
-
-print(l1)
-
-print(total_appears)
+CHARACTERS.reverse()

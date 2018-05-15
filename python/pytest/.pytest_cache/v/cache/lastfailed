@@ -1,0 +1,4 @@
+{
+  "test_sample.py::TestNumbers::()::test_init_str": true,
+  "test_sample.py::test_answer": true
+}

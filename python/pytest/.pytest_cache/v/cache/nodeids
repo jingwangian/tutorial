@@ -1,0 +1,5 @@
+[
+  "test_sample.py::TestNumbers::()::test_init_float",
+  "test_sample.py::TestNumbers::()::test_init_str",
+  "test_sample.py::test_answer"
+]
