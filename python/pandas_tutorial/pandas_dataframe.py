@@ -35,3 +35,4 @@ print(frame['year'][1:3])
 s1 = frame['year']
 s1.plot()
 frame.plot()
+pl.show()

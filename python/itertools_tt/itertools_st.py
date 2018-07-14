@@ -10,18 +10,25 @@ permutations(iterable, r=None)  -- r-length tuples, all possible orderings, no r
 import itertools as it
 
 for x in it.count(10):
-    print(x)
+    print(x, end=', ')
     if x > 20:
         break
+print('')
 
 for t in it.compress('abcdefg', [1, 0, 1, 1, 1]):
-    print(t)
+    print(t, end=', ')
+
+print('')
 
 for t in it.compress(['a1', 'a2', 'a3'], [1, 0, 1, 1, 1]):
-    print(t)
+    print(t, end=', ')
+
+print('')
 
 for t in it.compress({'b1': 1, 'b2': 2, 'b3': 3}, [1, 0, 1, 1, 1]):
-    print(t)
+    print(t, end=', ')
+
+print('')
 
 # print(list(it.product('ABCD', '1234')))
 # print(list(it.product('ABCD', '1234', 'abcd')))
@@ -40,6 +47,6 @@ print(list(it.product([1, 2, 3, 4], repeat=2)))
 print(list(it.permutations([1, 2, 3, 4], 2)))
 
 
-print(list(it.pairwise([1, 2, 3, 4])))
+# print(list(it.pairwise([1, 2, 3, 4])))
 # [('A', 'B'), ('A', 'C'), ('A', 'D'), ('A', 'E'), ('B', 'C'), ('B', 'D'), ('B', 'E'), ('C', 'D'), ('C', 'E'), ('D', 'E')]
 # print(list(it.combinations('ABCDE', 2)))

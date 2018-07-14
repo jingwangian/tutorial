@@ -11,9 +11,9 @@ m = re.search(r"endpoint://(.*?)/(.*)$", ref_url)
 print(ref_url)
 
 print(m.groups())
-# print(m.groups()[0],m.groups()[1])
+print(m.groups()[0],m.groups()[1])
 
-l1 = None
-for l in l1:
-    print(l)
+# l1 = None
+# for l in l1:
+#     print(l)
 

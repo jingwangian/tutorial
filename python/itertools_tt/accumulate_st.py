@@ -44,5 +44,5 @@ print(list(it.compress(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'], [1, 2, 3, 
 # ['a', 'b', 'c',      'e', 'f']
 
 
-print([k for k, g in it.groupby('AAAABBBCCDAABBB')])
+print([(k, len(list(g))) for k, g in it.groupby('AAAABBBCCDAABBB')])
 print([list(g) for k, g in it.groupby('AAAABBBCCDAABBB')])
