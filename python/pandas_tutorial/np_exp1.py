@@ -21,6 +21,7 @@ arr2.shape  #---> #"""(2, 4)"""
 
 arr2.dtype  # --->  #dtype('int64')
 
+
 arr3 = np.zeros((2, 3, 2))
 # arr3.dtype=np.int64
 print(arr3)

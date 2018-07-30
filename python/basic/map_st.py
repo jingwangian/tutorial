@@ -33,3 +33,12 @@ for x in l1:
     total = x + total
     print(total, end=' ')
     print(total)
+
+
+s1 = set('abdefafd')
+s2 = set('fdsfaf')
+s3 = set('dxgefk')
+
+fs = s1&s2&s3
+print(fs)
+
